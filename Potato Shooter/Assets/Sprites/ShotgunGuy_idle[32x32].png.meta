@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ShotgunGuy_idle[32x32]_0: -8258253734943963433
+      ShotgunGuy_idle[32x32]_1: 1462998699621589017
+      ShotgunGuy_idle[32x32]_10: -6865445187695890419
+      ShotgunGuy_idle[32x32]_11: 5643282037510412544
+      ShotgunGuy_idle[32x32]_12: 6386625989362737718
+      ShotgunGuy_idle[32x32]_13: -1004758142062675454
+      ShotgunGuy_idle[32x32]_14: 4156283727311192942
+      ShotgunGuy_idle[32x32]_2: 1302763326210217810
+      ShotgunGuy_idle[32x32]_3: 1034021730597182755
+      ShotgunGuy_idle[32x32]_4: -6508684355039332807
+      ShotgunGuy_idle[32x32]_5: 1657967227698389105
+      ShotgunGuy_idle[32x32]_6: 4390730850695862288
+      ShotgunGuy_idle[32x32]_7: -1530805807679276871
+      ShotgunGuy_idle[32x32]_8: 3083925714703325682
+      ShotgunGuy_idle[32x32]_9: 970450661173498956
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
