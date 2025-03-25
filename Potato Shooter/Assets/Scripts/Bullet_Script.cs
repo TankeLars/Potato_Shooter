@@ -1,0 +1,37 @@
+using UnityEngine;
+
+public class Bullet_Script : MonoBehaviour
+{
+    private Vector3 mousePosition;
+    private Camera mainCamera;
+    private Rigidbody2D rb;
+    public float force;  // Now public to be set from Gun script
+    private float timePassed = 0;
+    public float maxTime = 1;
+
+    public float damage; // Variable to hold the damage value
+    public float angle;  // Variable to hold the spread angle for the bullet
+
+    void Start()
+    {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        rb = GetComponent<Rigidbody2D>();
+        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector3 direction = mousePosition - transform.position;
+        direction = Quaternion.Euler(0, 0, angle) * direction; 
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;  
+        
+        float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 90); 
+    }
+
+    void Update()
+    {
+        timePassed += Time.deltaTime;
+        if (timePassed > maxTime)
+        {
+            Destroy(gameObject);
+        }
+    }
+}
