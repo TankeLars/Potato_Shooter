@@ -6,6 +6,8 @@ public class Bullet_Script : MonoBehaviour
     private Camera mainCamera;
     private Rigidbody2D rb;
     public float force;
+    private float timePassed = 0;
+    public float maxTime = 1;
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -21,6 +23,11 @@ public class Bullet_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timePassed += Time.deltaTime;
+        if (timePassed > maxTime)
+        {
+            Destroy(gameObject);
+        }
         
     }
 }
