@@ -8,6 +8,8 @@ public class Bullet_Script : MonoBehaviour
     public float force;
     private float timePassed = 0;
     public float maxTime = 1;
+
+    private float damage;
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
