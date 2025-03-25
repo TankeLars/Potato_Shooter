@@ -3,39 +3,39 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] public int equippedGun;  // Current equipped gun index
+    [SerializeField] public int equippedGun; 
     private bool isFiring;
     private bool isReloading;
 
-    public Gun[] guns;  // Array to hold references to gun scripts
+    public Gun[] guns; 
 
     private void Start()
     {
         isFiring = false;
         isReloading = false;
 
-        // Assuming each child has a Gun component attached to it
+
         guns = new Gun[transform.childCount];
 
-        // Assign the gun components to the array
+
         for (int i = 0; i < transform.childCount; i++)
         {
             guns[i] = transform.GetChild(i).GetComponent<Gun>();
         }
 
-        EquipGun();  // Equip the starting gun
+        EquipGun();
     }
 
     private void Update()
     {
         if (isFiring && guns[equippedGun] != null)
         {
-            Debug.Log("Pulling trigger");
-            guns[equippedGun].AttemptFire();  // Call fire on the equipped gun
+            guns[equippedGun].AttemptFire(); 
         }
         if (isReloading && guns[equippedGun] != null)
         {
-            guns[equippedGun].Reload();  // Call reload on the equipped gun
+            guns[equippedGun].Reload();
+            isReloading = false; 
         }
     }
 
@@ -64,19 +64,19 @@ public class PlayerShoot : MonoBehaviour
 
         if (previousGun != equippedGun)
         {
-            EquipGun();  // Equip the new selected gun
+            EquipGun(); 
         }
     }
 
     private void EquipGun()
     {
-        // Deactivate all guns first
+
         foreach (var gun in guns)
         {
             gun.gameObject.SetActive(false);
         }
 
-        // Activate the currently equipped gun
+
         if (equippedGun >= 0 && equippedGun < guns.Length)
         {
             guns[equippedGun].gameObject.SetActive(true);

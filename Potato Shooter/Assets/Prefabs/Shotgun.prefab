@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3661553762761068393}
   - component: {fileID: 2677689203788346111}
   m_Layer: 0
-  m_Name: Machinegun
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,14 +49,14 @@ MonoBehaviour:
   bulletSpawn: {fileID: 7331087983016506843}
   canFire: 1
   isReloading: 0
-  maxAmmo: 10
-  currentAmmo: 0
+  maxAmmo: 3
+  currentAmmo: 3
   reloadTime: 2
-  timeBetweenShots: 0.2
-  singleShot: 1
-  bulletAmount: 1
-  spreadAngle: 0
-  bulletDamage: 10
+  timeBetweenShots: 0.5
+  singleShot: 0
+  bulletAmount: 5
+  spreadAngle: 10
+  bulletDamage: 5
   bulletForce: 15
 --- !u!1 &5225183095691390761
 GameObject:

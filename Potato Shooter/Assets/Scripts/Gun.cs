@@ -4,10 +4,10 @@ public class Gun : MonoBehaviour
 {
     private Camera mainCamera;
     private Vector3 mousePosition;
-    public GameObject bulletPrefab;  // Bullet prefab to instantiate when firing
-    public Transform bulletSpawn;    // Position from where the bullets are spawned
-    public bool canFire = true;      // Can the gun currently fire?
-    private bool isReloading = false; // Is the gun currently reloading?
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+    public bool canFire = true;
+    public bool isReloading = false;
 
     public int maxAmmo = 10;
     public int currentAmmo;
@@ -15,11 +15,17 @@ public class Gun : MonoBehaviour
     private float reloadTimer = 0f;
     private float shotTimer = 0f;
     public float timeBetweenShots = 0.2f;
-    public GameObject gunModelPrefab;
+
+    public bool singleShot;
+    public int bulletAmount;
+
+    public float spreadAngle = 10f;  
+    public float bulletDamage = 10f; 
+    public float bulletForce = 10f; 
 
     void Start()
     {
-        currentAmmo = maxAmmo;  // Initialize ammo at the start
+        currentAmmo = maxAmmo;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
@@ -31,13 +37,14 @@ public class Gun : MonoBehaviour
 
         float rotationZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
-
         transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+
         // Reload logic
-        if(currentAmmo == maxAmmo)
+        if (currentAmmo == maxAmmo)
         {
             isReloading = false;
         }
+
         if (isReloading)
         {
             Debug.Log("currently reloading");
@@ -50,7 +57,6 @@ public class Gun : MonoBehaviour
             }
         }
 
-        // Fire cooldown logic
         if (!canFire)
         {
             shotTimer += Time.deltaTime;
@@ -66,33 +72,59 @@ public class Gun : MonoBehaviour
     {
         if (currentAmmo == 0)
         {
-            Debug.Log("no ammo");
-            Reload();  
+            Reload();
             return false;
         }
-        Debug.Log(isReloading);
+
         if (canFire && !isReloading)
         {
-            Debug.Log("weeeee");
             Fire();
             currentAmmo--;
             canFire = false;
             return true;
         }
-        Debug.Log("nothing happened");
         return false;
     }
 
     private void Fire()
     {
-        Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        if (singleShot)
+        {
+            InstantiateBullet(0f);
+        }
+        else
+        {
+
+            float angleStep = spreadAngle / (bulletAmount - 1);
+
+            for (int i = 0; i < bulletAmount; i++)
+            {
+                float angleOffset = (i - (bulletAmount / 2)) * angleStep; 
+                InstantiateBullet(angleOffset);
+            }
+        }
+    }
+
+    private void InstantiateBullet(float angleOffset)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+
+        // Get the Bullet_Script attached to the instantiated bullet
+        Bullet_Script bulletScript = bullet.GetComponent<Bullet_Script>();
+        
+        if (bulletScript != null)
+        {
+            bulletScript.angle = angleOffset;       
+            bulletScript.damage = bulletDamage;     
+            bulletScript.force = bulletForce;       
+        }
     }
 
     public void Reload()
     {
         if (!isReloading && currentAmmo < maxAmmo)
         {
-            isReloading = true;  // Start the reload process
+            isReloading = true;
         }
     }
 }
