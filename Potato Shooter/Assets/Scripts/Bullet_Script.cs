@@ -5,12 +5,12 @@ public class Bullet_Script : MonoBehaviour
     private Vector3 mousePosition;
     private Camera mainCamera;
     private Rigidbody2D rb;
-    public float force;  // Now public to be set from Gun script
+    public float force;  
     private float timePassed = 0;
     public float maxTime = 1;
 
-    public float damage; // Variable to hold the damage value
-    public float angle;  // Variable to hold the spread angle for the bullet
+    public float damage; 
+    public float angle;  
 
     void Start()
     {
@@ -34,4 +34,14 @@ public class Bullet_Script : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Bullet")) 
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
 }

@@ -47,7 +47,6 @@ public class Gun : MonoBehaviour
 
         if (isReloading)
         {
-            Debug.Log("currently reloading");
             reloadTimer += Time.deltaTime;
             if (reloadTimer >= reloadTime)
             {

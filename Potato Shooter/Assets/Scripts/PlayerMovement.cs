@@ -24,5 +24,4 @@ public class PlayerMovement : MonoBehaviour
     {
         movement = value.Get<Vector2>();
     }
-
 }
