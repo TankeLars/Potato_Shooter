@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bullet_Script : MonoBehaviour
 {
+    public LayerMask collisionLayer;
     private Vector3 mousePosition;
     private Camera mainCamera;
     private Rigidbody2D rb;
@@ -37,11 +38,16 @@ public class Bullet_Script : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Bullet")) 
+        if ((collisionLayer.value & (1 << collision.gameObject.layer)) != 0)
         {
+            if (collision.CompareTag("Zombie"))
+            {
+                Debug.Log("Zombie hit");
+                collision.GetComponent<ZombieHealth>().EatPotatoes();
+            }
+
             Destroy(gameObject);
         }
-
     }
 
 }
