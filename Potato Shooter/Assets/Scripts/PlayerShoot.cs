@@ -6,6 +6,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] public int equippedGun; 
     private bool isFiring;
     private bool isReloading;
+    private bool canFire;
 
     public Gun[] guns; 
 
@@ -13,7 +14,7 @@ public class PlayerShoot : MonoBehaviour
     {
         isFiring = false;
         isReloading = false;
-
+        canFire = true;
 
         guns = new Gun[transform.childCount];
 
@@ -28,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        if (isFiring && guns[equippedGun] != null)
+        if (isFiring && guns[equippedGun] != null && canFire)
         {
             guns[equippedGun].AttemptFire(); 
         }
@@ -39,6 +40,15 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+    public void toggleOnFireAbility()
+    {
+        canFire = true;
+    }
+
+    public void toggleOffFireAbility()
+    {
+        canFire = false;
+    }
     private void OnShoot(InputValue value)
     {
         isFiring = value.isPressed;

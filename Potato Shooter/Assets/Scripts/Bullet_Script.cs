@@ -37,7 +37,7 @@ public class Bullet_Script : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Bullet")) 
+        if (!collision.CompareTag("Bullet") && !collision.CompareTag("Player")) 
         {
             Destroy(gameObject);
         }

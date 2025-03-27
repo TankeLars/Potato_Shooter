@@ -4,7 +4,9 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
     public TextMeshProUGUI weaponsInfo;
+    public TextMeshProUGUI dashCooldownInfo;
     private PlayerShoot playerShoot;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
@@ -12,6 +14,7 @@ public class HUDManager : MonoBehaviour
         if (player != null)
         {
             playerShoot = player.GetComponent<PlayerShoot>();
+            playerMovement = player.GetComponent<PlayerMovement>();
         }
     }
 
@@ -25,6 +28,15 @@ public class HUDManager : MonoBehaviour
         else
         {
             weaponsInfo.text = "No Weapon Equipped";
+        }
+        float dashCooldown = playerMovement.GetDashCooldown();
+        if(dashCooldown == 0f)
+        {
+            dashCooldownInfo.text = "Dash \nReady";
+        }
+        else
+        {
+            dashCooldownInfo.text = $"Dash\n {dashCooldown}";
         }
     }
 }
