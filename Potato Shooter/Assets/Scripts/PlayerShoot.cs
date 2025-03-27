@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngineInternal;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -61,22 +62,53 @@ public class PlayerShoot : MonoBehaviour
 
     private void OnSwitchWeapon()
     {
-        int previousGun = equippedGun;
-
-        if (equippedGun >= guns.Length - 1)
+        SwitchWeapon(true);
+    }
+    void OnScrollWeapon(InputValue value)
+    {
+        float direction = value.Get<float>();
+        if(direction == 1)
         {
-            equippedGun = 0;
+            SwitchWeapon(true);
+        }
+        else if (direction == -1)
+        {
+            SwitchWeapon(false);
+        }
+    }
+    private void SwitchWeapon(bool direction)
+    {
+        int previousGun = equippedGun;
+        if(direction)
+        {
+            if (equippedGun >= guns.Length - 1)
+            {
+                equippedGun = 0;
+            }
+            else
+            {
+                equippedGun++;
+            }
         }
         else
         {
-            equippedGun++;
+            if (equippedGun <= 0)
+            {
+                equippedGun = guns.Length - 1;
+            }
+            else 
+            {
+                equippedGun--;
+            }
         }
+        
 
         if (previousGun != equippedGun)
         {
             EquipGun(); 
         }
     }
+    
 
     private void EquipGun()
     {
