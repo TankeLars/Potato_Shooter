@@ -20,7 +20,7 @@ public class Gun : MonoBehaviour
     public int bulletAmount;
 
     public float spreadAngle = 10f;  
-    public float bulletDamage = 10f; 
+    public float potatoDamage; 
     public float bulletForce = 10f; 
 
     void Start()
@@ -114,7 +114,7 @@ public class Gun : MonoBehaviour
         if (bulletScript != null)
         {
             bulletScript.angle = angleOffset;       
-            bulletScript.damage = bulletDamage;     
+            bulletScript.potatoDamage = potatoDamage;     
             bulletScript.force = bulletForce;       
         }
     }

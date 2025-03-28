@@ -56,7 +56,7 @@ MonoBehaviour:
   singleShot: 1
   bulletAmount: 1
   spreadAngle: 0
-  bulletDamage: 25
+  potatoDamage: 2
   bulletForce: 30
 --- !u!1 &5225183095691390761
 GameObject:
