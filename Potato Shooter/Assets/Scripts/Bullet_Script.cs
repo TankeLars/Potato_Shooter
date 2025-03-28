@@ -10,7 +10,7 @@ public class Bullet_Script : MonoBehaviour
     private float timePassed = 0;
     public float maxTime = 1;
 
-    public float damage; 
+    public float potatoDamage; 
     public float angle;  
 
     void Start()
@@ -40,10 +40,10 @@ public class Bullet_Script : MonoBehaviour
     {
         if ((collisionLayer.value & (1 << collision.gameObject.layer)) != 0)
         {
-            if (collision.CompareTag("Zombie"))
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                Debug.Log("Zombie hit");
-                collision.GetComponent<ZombieHealth>().EatPotatoes();
+                damageable.DoDamage(potatoDamage);
             }
 
             Destroy(gameObject);
