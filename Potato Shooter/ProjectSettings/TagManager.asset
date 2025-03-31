@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Undefined
+  - ZombieCollider
+  - Zombie
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Damageable
   - 
   - 
   - 
@@ -45,6 +47,12 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1388015021
+    locked: 0
+  - name: InteractableProps
+    uniqueID: 465433379
+    locked: 0
+  - name: Enemies
+    uniqueID: 4114992673
     locked: 0
   - name: Player
     uniqueID: 2558311203

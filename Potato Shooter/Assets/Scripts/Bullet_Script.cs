@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bullet_Script : MonoBehaviour
 {
+    public LayerMask collisionLayer;
     private Vector3 mousePosition;
     private Camera mainCamera;
     private Rigidbody2D rb;
@@ -9,7 +10,7 @@ public class Bullet_Script : MonoBehaviour
     private float timePassed = 0;
     public float maxTime = 1;
 
-    public float damage; 
+    public float potatoDamage; 
     public float angle;  
 
     void Start()
@@ -37,11 +38,16 @@ public class Bullet_Script : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Bullet") && !collision.CompareTag("Player")) 
+        if ((collisionLayer.value & (1 << collision.gameObject.layer)) != 0)
         {
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.DoDamage(potatoDamage);
+            }
+
             Destroy(gameObject);
         }
-
     }
 
 }
