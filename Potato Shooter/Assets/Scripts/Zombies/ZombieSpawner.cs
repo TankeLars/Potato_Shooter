@@ -10,6 +10,16 @@ public class ZombieSpawner : MonoBehaviour
     public int maxZombies = 10; // Maximum number of zombies that can be spawned
     public int currentZombies = 0; // Current number of zombies spawned
     public GameObject zombiePrefab; // Reference to the zombie prefab
+    public float spawnRadius = 25f; // Radius within which zombies can spawn
+    public float minDistance = 10f; // Minimum distance between player and zombie spawn position
+
+    // Awake is called when the script instance is being loaded
+    private void Awake()
+    {
+        // Make the ZombieSpawner instance available from any script
+        DontDestroyOnLoad(gameObject);
+
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,8 +57,6 @@ public class ZombieSpawner : MonoBehaviour
     Vector3 GetRandomSpawnPosition()
     {
         Vector3 playerPosition = transform.position;
-        float spawnRadius = 10f; // Radius within which zombies can spawn
-        float minDistance = 5f; // Minimum distance between player and zombie spawn position
 
         Vector2 randomCirclePoint = Random.insideUnitCircle.normalized * (spawnRadius - minDistance);
         Vector3 spawnPosition = playerPosition + new Vector3(randomCirclePoint.x, 0f, randomCirclePoint.y);
