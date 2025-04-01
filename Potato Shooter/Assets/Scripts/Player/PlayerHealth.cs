@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [SerializeField]
     private float maxHealth;
-    private float currentHealth;
+    public float currentHealth;
 
     void Start()
     {
@@ -23,7 +23,8 @@ public class PlayerHealth : MonoBehaviour
 
     void OnDeath()
     {
-        //handle death here
+        Destroy(gameObject);
+        GameManager.Instance.ShowDeathScreen();
     }
 
     void Heal(float healAmount)
@@ -38,5 +39,15 @@ public class PlayerHealth : MonoBehaviour
     public float getHealth()
     {
         return Mathf.Round(currentHealth * 10) / 10;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public void DoDamage(float damage)
+    {
+        TakeDamage(damage);
     }
 }
