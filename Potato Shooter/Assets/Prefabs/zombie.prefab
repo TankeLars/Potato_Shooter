@@ -270,8 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 2
   movementDebuff: 0
-  attackRange: 1.35
-  attackDamage: 0
+  attackRange: 2
+  attackDamage: 1
   attackCooldown: 1
   attackCooldownTimer: 0
   player: {fileID: 0}
@@ -292,3 +292,4 @@ MonoBehaviour:
   debuffLevel: 0
   potatoesEaten: 0
   maxPotatoes: 5
+  player: {fileID: 0}

@@ -47,7 +47,8 @@ public class ZombieMovement : MonoBehaviour
             {
                 if (canAttack)
                 {
-                    /* Attack(); */
+                    IDamageable damageable = player.GetComponent<IDamageable>();
+                    damageable.DoDamage(attackDamage);
                 }
             }
         }
