@@ -36,6 +36,7 @@ public class ExplodingBarrel : MonoBehaviour, IDamageable
     {
         if (hasExploded) return;
         hasExploded = true;
+        Destroy(gameObject);
 
         for (int i = 0; i < m_AllDamageables.Count; i++)
         {
@@ -45,7 +46,6 @@ public class ExplodingBarrel : MonoBehaviour, IDamageable
             }
         }
 
-        Destroy(gameObject);
     }
 
     public Vector3 GetPosition()
