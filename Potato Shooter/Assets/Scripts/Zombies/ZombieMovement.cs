@@ -11,7 +11,6 @@ public class ZombieMovement : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
-    [SerializeField] private bool canAttack = true;
     [SerializeField] private bool isPlayerInRange = false;
 
     private SpriteRenderer spriteRenderer;
@@ -45,10 +44,11 @@ public class ZombieMovement : MonoBehaviour
             }
             else
             {
-                if (canAttack)
+                if (attackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.transform.position) <= attackRange)
                 {
                     IDamageable damageable = player.GetComponent<IDamageable>();
                     damageable.DoDamage(attackDamage);
+                    attackCooldownTimer = attackCooldown;
                 }
             }
         }
@@ -61,6 +61,11 @@ public class ZombieMovement : MonoBehaviour
         else
         {
             spriteRenderer.flipX = false;
+        }
+
+        if (attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.deltaTime;
         }
     }
 
