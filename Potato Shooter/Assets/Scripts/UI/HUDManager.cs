@@ -5,8 +5,10 @@ public class HUDManager : MonoBehaviour
 {
     public TextMeshProUGUI weaponsInfo;
     public TextMeshProUGUI dashCooldownInfo;
+    public TextMeshProUGUI healthInfo;
     private PlayerShoot playerShoot;
     private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
 
     void Start()
     {
@@ -15,6 +17,7 @@ public class HUDManager : MonoBehaviour
         {
             playerShoot = player.GetComponent<PlayerShoot>();
             playerMovement = player.GetComponent<PlayerMovement>();
+            playerHealth = player.GetComponent<PlayerHealth>();
         }
     }
 
@@ -38,5 +41,8 @@ public class HUDManager : MonoBehaviour
         {
             dashCooldownInfo.text = $"Dash\n {dashCooldown}";
         }
+
+        float currentHealth = playerHealth.getHealth();
+        healthInfo.text = $"{currentHealth} HP";
     }
 }

@@ -23,7 +23,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void OnDeath()
     {
-        //handle death here
+        Destroy(gameObject);
+        GameManager.Instance.ShowDeathScreen();
     }
 
     void Heal(float healAmount)
