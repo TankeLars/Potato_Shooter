@@ -57,6 +57,9 @@ TagManager:
   - name: Player
     uniqueID: 2558311203
     locked: 0
+  - name: Enemies
+    uniqueID: 4002402829
+    locked: 0
   - name: Buildings
     uniqueID: 596936423
     locked: 0

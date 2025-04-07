@@ -514,8 +514,8 @@ MonoBehaviour:
   maxZombies: 100
   currentZombies: 0
   zombiePrefab: {fileID: 2940928142362407440, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-  spawnRadius: 25
-  minDistance: 10
+  spawnRadius: 50
+  minDistance: 25
 --- !u!1 &287588845
 GameObject:
   m_ObjectHideFlags: 0
