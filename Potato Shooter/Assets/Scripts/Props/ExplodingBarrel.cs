@@ -3,22 +3,16 @@ using UnityEngine;
 
 public class ExplodingBarrel : MonoBehaviour, IDamageable
 {
-    [SerializeField] public float range = 10f;
+    [SerializeField] public float range = 5f;
     [SerializeField] public float damage = 10f;
     [SerializeField] public float barrelHealth = 0.5f;
-    Vector3 Position { get { return transform.position; } }
 
     List<IDamageable> m_AllDamageables = new List<IDamageable>();
     private bool hasExploded = false;
 
     void Start()
     {
-        MonoBehaviour[] allScripts = FindObjectsOfType<MonoBehaviour>();
-        for (int i = 0; i < allScripts.Length; i++)
-        {
-            if (allScripts[i] is IDamageable)
-                m_AllDamageables.Add(allScripts[i] as IDamageable);
-        }
+
     }
 
     public void DoDamage(float damage)
@@ -36,16 +30,24 @@ public class ExplodingBarrel : MonoBehaviour, IDamageable
     {
         if (hasExploded) return;
         hasExploded = true;
-        Destroy(gameObject);
 
-        for (int i = 0; i < m_AllDamageables.Count; i++)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range);
+        foreach (Collider2D collider in colliders)
         {
-            if (Vector3.Distance(m_AllDamageables[i].GetPosition(), transform.position) < range)
+            IDamageable damageable = collider.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                m_AllDamageables[i].DoDamage(damage);
+                damageable.DoDamage(damage);
             }
         }
 
+        Destroy(gameObject);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 
     public Vector3 GetPosition()

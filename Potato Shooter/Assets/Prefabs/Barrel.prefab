@@ -175,6 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a87eb146949e534292f82bc007fe156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 3.5
   damage: 10
   barrelHealth: 0.5

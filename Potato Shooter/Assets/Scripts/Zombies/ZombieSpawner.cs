@@ -59,9 +59,17 @@ public class ZombieSpawner : MonoBehaviour
         Vector3 playerPosition = transform.position;
 
         Vector2 randomCirclePoint = Random.insideUnitCircle.normalized * (spawnRadius - minDistance);
-        Vector3 spawnPosition = playerPosition + new Vector3(randomCirclePoint.x, 0f, randomCirclePoint.y);
-
+        Vector3 spawnPosition = playerPosition + new Vector3(randomCirclePoint.x, randomCirclePoint.y, 0f);
         return spawnPosition;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, minDistance);
+
     }
 
     void InstantiateZombie(Vector3 spawnPosition)
