@@ -63,5 +63,8 @@ TagManager:
   - name: Buildings
     uniqueID: 596936423
     locked: 0
+  - name: Overlay
+    uniqueID: 3543395503
+    locked: 0
   m_RenderingLayers:
   - Default
