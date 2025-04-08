@@ -13,6 +13,8 @@ public class Gun : MonoBehaviour
     public int currentAmmo;
     public float reloadTime = 2f;
     private float reloadTimer = 0f;
+    private AudioSource audioSource;
+
     private float shotTimer = 0f;
     public float timeBetweenShots = 0.2f;
 
@@ -25,6 +27,7 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentAmmo = maxAmmo;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
@@ -124,6 +127,8 @@ public class Gun : MonoBehaviour
         if (!isReloading && currentAmmo < maxAmmo)
         {
             isReloading = true;
+            HUDManager.Instance?.Reload(reloadTime);
+            audioSource.Play();
         }
     }
 }

@@ -1,14 +1,31 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System.Collections;
 
 public class HUDManager : MonoBehaviour
 {
+    public static HUDManager Instance { get; private set; } // Singleton instance
+
     public TextMeshProUGUI weaponsInfo;
     public TextMeshProUGUI dashCooldownInfo;
     public TextMeshProUGUI healthInfo;
+    public Image redCircle;
+
     private PlayerShoot playerShoot;
     private PlayerMovement playerMovement;
     private PlayerHealth playerHealth;
+
+    void Awake()
+    {
+        // Set up Singleton
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     void Start()
     {
@@ -19,30 +36,56 @@ public class HUDManager : MonoBehaviour
             playerMovement = player.GetComponent<PlayerMovement>();
             playerHealth = player.GetComponent<PlayerHealth>();
         }
+
+        if (redCircle != null)
+        {
+            redCircle.gameObject.SetActive(false);
+            redCircle.fillAmount = 0f;
+        }
     }
 
     void Update()
     {
         if (playerShoot != null && playerShoot.equippedGun >= 0 && playerShoot.equippedGun < playerShoot.guns.Length)
         {
-            Gun gun = playerShoot.guns[playerShoot.equippedGun]; // Access the equipped gun
+            Gun gun = playerShoot.guns[playerShoot.equippedGun];
             weaponsInfo.text = $"{gun.name}\nAmmo: {gun.currentAmmo}/{gun.maxAmmo}";
         }
         else
         {
             weaponsInfo.text = "No Weapon Equipped";
         }
+
         float dashCooldown = playerMovement.GetDashCooldown();
-        if(dashCooldown == 0f)
-        {
-            dashCooldownInfo.text = "Dash \nReady";
-        }
-        else
-        {
-            dashCooldownInfo.text = $"Dash\n {dashCooldown}";
-        }
+        dashCooldownInfo.text = dashCooldown == 0f ? "Dash \nReady" : $"Dash\n {dashCooldown}";
 
         float currentHealth = playerHealth.getHealth();
         healthInfo.text = $"{currentHealth} HP";
     }
+
+    public void Reload(float duration)
+    {
+        if (redCircle != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(PlayRedCircleAnimation(duration));
+        }
+    }
+
+    private IEnumerator PlayRedCircleAnimation(float duration)
+    {
+        redCircle.gameObject.SetActive(true);
+        redCircle.fillAmount = 0f;
+
+        float timer = 0f;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            redCircle.fillAmount = Mathf.Clamp01(timer / duration);
+            yield return null;
+        }
+
+        redCircle.gameObject.SetActive(false);
+    }
 }
+
