@@ -39,6 +39,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        PlayerLevel.Instance.AddXP(100);
         Destroy(gameObject);
         ZombieSpawner zombieSpawner = player.GetComponent<ZombieSpawner>();
         zombieSpawner.currentZombies--;

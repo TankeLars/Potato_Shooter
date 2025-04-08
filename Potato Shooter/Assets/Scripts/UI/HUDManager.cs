@@ -10,11 +10,13 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI weaponsInfo;
     public TextMeshProUGUI dashCooldownInfo;
     public TextMeshProUGUI healthInfo;
+    public TextMeshProUGUI levelInfo;
     public Image redCircle;
 
     private PlayerShoot playerShoot;
     private PlayerMovement playerMovement;
     private PlayerHealth playerHealth;
+    private PlayerLevel playerLevel;
 
     void Awake()
     {
@@ -35,6 +37,7 @@ public class HUDManager : MonoBehaviour
             playerShoot = player.GetComponent<PlayerShoot>();
             playerMovement = player.GetComponent<PlayerMovement>();
             playerHealth = player.GetComponent<PlayerHealth>();
+            playerLevel = player.GetComponent<PlayerLevel>();
         }
 
         if (redCircle != null)
@@ -61,6 +64,8 @@ public class HUDManager : MonoBehaviour
 
         float currentHealth = playerHealth.getHealth();
         healthInfo.text = $"{currentHealth} HP";
+        int level = playerLevel.GetLevel();
+        levelInfo.text = $"Level {level}";
     }
 
     public void Reload(float duration)
