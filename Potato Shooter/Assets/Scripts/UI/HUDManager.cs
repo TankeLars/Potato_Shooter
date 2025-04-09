@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class HUDManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI healthInfo;
     public TextMeshProUGUI levelInfo;
     public Image redCircle;
+    public Image xpBar;
 
     private PlayerShoot playerShoot;
     private PlayerMovement playerMovement;
@@ -66,6 +68,10 @@ public class HUDManager : MonoBehaviour
         healthInfo.text = $"{currentHealth} HP";
         int level = playerLevel.GetLevel();
         levelInfo.text = $"Level {level}";
+
+        float xpPercentage = playerLevel.GetPercentageToNextLevel();
+        //Debug.Log(xpPercentage);
+        xpBar.fillAmount = xpPercentage; 
     }
 
     public void Reload(float duration)
@@ -76,6 +82,7 @@ public class HUDManager : MonoBehaviour
             StartCoroutine(PlayRedCircleAnimation(duration));
         }
     }
+
 
     private IEnumerator PlayRedCircleAnimation(float duration)
     {

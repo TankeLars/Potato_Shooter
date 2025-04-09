@@ -292,3 +292,4 @@ MonoBehaviour:
   potatoesEaten: 0
   maxPotatoes: 5
   player: {fileID: 0}
+  xpOnKill: 25

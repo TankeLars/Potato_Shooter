@@ -31,10 +31,6 @@ public class PlayerLevel : MonoBehaviour
         xpToNextLevel = CalculateXPForNextLevel(level);
     }
 
-    void Update()
-    {
-        Debug.Log(level);
-    }
 
     public void AddXP(int amount)
     {
@@ -58,6 +54,16 @@ public class PlayerLevel : MonoBehaviour
     private int CalculateXPForNextLevel(int currentLevel)
     {
         return Mathf.FloorToInt(baseXP * Mathf.Pow(xpMultiplier, currentLevel - 1));
+    }
+    public float GetPercentageToNextLevel()
+    {
+        // currentXP is 10
+        //  xpTpNextLevel is 100
+        // percentage should be 0.10, but it is not working
+
+        float percentage = (float)currentXP / xpToNextLevel;
+        Debug.Log(percentage);
+        return percentage;
     }
 
     public int GetLevel() => level;
