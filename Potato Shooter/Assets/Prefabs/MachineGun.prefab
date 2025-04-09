@@ -50,12 +50,13 @@ MonoBehaviour:
   bulletSpawn: {fileID: 7331087983016506843}
   canFire: 1
   isReloading: 0
-  maxAmmo: 10
+  maxAmmo: 20
   currentAmmo: 0
   reloadTime: 2
   timeBetweenShots: 0.2
   singleShot: 1
   bulletAmount: 1
+  pierceAmount: 0
   spreadAngle: 0
   potatoDamage: 1
   bulletForce: 15

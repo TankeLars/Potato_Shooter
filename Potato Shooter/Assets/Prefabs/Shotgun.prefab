@@ -56,8 +56,9 @@ MonoBehaviour:
   timeBetweenShots: 0.5
   singleShot: 0
   bulletAmount: 5
+  pierceAmount: 0
   spreadAngle: 15
-  potatoDamage: 0.5
+  potatoDamage: 0.8
   bulletForce: 15
 --- !u!82 &-6249111295847723250
 AudioSource:
