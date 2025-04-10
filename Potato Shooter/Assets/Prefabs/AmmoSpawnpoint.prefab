@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7482867758738710288}
   - component: {fileID: 4798313546361272060}
   - component: {fileID: 6329273595928423864}
+  - component: {fileID: 1570533225999929659}
   m_Layer: 0
   m_Name: AmmoSpawnpoint
   m_TagString: AmmoSpawn
@@ -63,7 +64,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -134,3 +135,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1570533225999929659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899975138791712399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace4137d3a3ab994c909e99baf9f8352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

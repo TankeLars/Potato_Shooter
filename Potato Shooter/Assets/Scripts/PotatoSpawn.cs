@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class PotatoSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject itemToSpawn; // Only one item type to spawn
+    [SerializeField] private GameObject potatoPrefab; // Only potatoes will spawn
     [SerializeField] private float spawnInterval = 5f; // Time between spawn attempts
-    [SerializeField] private LayerMask spawnBlockingLayers; // Layers that block spawning
-    [SerializeField] private Vector2 spawnCheckSize = Vector2.one; // Area to check for existing items
 
     private float timer;
 
@@ -15,12 +13,12 @@ public class PotatoSpawn : MonoBehaviour
         
         if (timer >= spawnInterval)
         {
-            TrySpawnItem();
+            TrySpawnPotato();
             timer = 0f;
         }
     }
 
-    void TrySpawnItem()
+    void TrySpawnPotato()
     {
         GameObject[] spawnTiles = GameObject.FindGameObjectsWithTag("AmmoSpawn");
         
@@ -35,23 +33,17 @@ public class PotatoSpawn : MonoBehaviour
 
         foreach (GameObject tile in spawnTiles)
         {
-            if (!IsPositionBlocked(tile.transform.position))
+            SpawnPoint spawnPoint = tile.GetComponent<SpawnPoint>();
+            if (spawnPoint != null && !spawnPoint.HasPotato)
             {
-                Debug.Log("spawning potato");
-                Instantiate(itemToSpawn, tile.transform.position, Quaternion.identity);
+                Debug.Log("Spawning potato at " + tile.transform.position);
+                Instantiate(potatoPrefab, tile.transform.position, Quaternion.identity);
                 return; // Exit after successful spawn
             }
-            Debug.Log("blocked");
+            Debug.Log("Position blocked at " + tile.transform.position);
         }
         
         Debug.Log("No available spawn positions found");
-    }
-
-    bool IsPositionBlocked(Vector2 position)
-    {
-        // Check if there's already an item at this position
-        Collider2D hit = Physics2D.OverlapBox(position, spawnCheckSize, 0f, spawnBlockingLayers);
-        return hit != null;
     }
 
     // Fisher-Yates shuffle algorithm
@@ -65,5 +57,4 @@ public class PotatoSpawn : MonoBehaviour
             array[randomIndex] = temp;
         }
     }
-
 }

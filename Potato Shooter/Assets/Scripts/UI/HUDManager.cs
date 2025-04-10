@@ -6,7 +6,7 @@ using System;
 
 public class HUDManager : MonoBehaviour
 {
-    public static HUDManager Instance { get; private set; } // Singleton instance
+    public static HUDManager Instance { get; private set; }
 
     public TextMeshProUGUI weaponsInfo;
     public TextMeshProUGUI dashCooldownInfo;
