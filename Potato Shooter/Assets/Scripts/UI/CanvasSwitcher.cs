@@ -2,28 +2,39 @@ using UnityEngine;
 
 public class CanvasSwitcher : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas1;
-    [SerializeField] private Canvas canvas2;
+    [SerializeField] private Canvas inGameHUD;
+    [SerializeField] private Canvas deathScreen;
+    [SerializeField] private Canvas winScreen;
 
 
 
     void Start()
     {
-        EnsureCanvasGroup(canvas1);
-        EnsureCanvasGroup(canvas2);
-        ShowCanvas1();
+        EnsureCanvasGroup(inGameHUD);
+        EnsureCanvasGroup(deathScreen);
+        EnsureCanvasGroup(winScreen);
+        ShowinGameHUD();
     }
 
-    public void ShowCanvas1()
+    public void ShowinGameHUD()
     {
-        canvas1.gameObject.SetActive(true);
-        canvas2.gameObject.SetActive(false);
+        inGameHUD.gameObject.SetActive(true);
+        deathScreen.gameObject.SetActive(false);
+        winScreen.gameObject.SetActive(false);
     }
 
-    public void ShowCanvas2()
+    public void ShowDeathScreen()
     {
-        canvas1.gameObject.SetActive(false);
-        canvas2.gameObject.SetActive(true);
+        inGameHUD.gameObject.SetActive(false);
+        deathScreen.gameObject.SetActive(true);
+        winScreen.gameObject.SetActive(false);
+    }
+
+        public void ShowWinScreen()
+    {
+        inGameHUD.gameObject.SetActive(false);
+        deathScreen.gameObject.SetActive(false);
+        winScreen.gameObject.SetActive(true);
     }
 
     private void EnsureCanvasGroup(Canvas canvas)

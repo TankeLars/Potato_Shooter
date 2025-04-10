@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI dashCooldownInfo;
     public TextMeshProUGUI healthInfo;
     public TextMeshProUGUI levelInfo;
+    public TextMeshProUGUI timer;
     public Image redCircle;
     public Image xpBar;
 
@@ -61,6 +62,7 @@ public class HUDManager : MonoBehaviour
             weaponsInfo.text = "No Weapon Equipped";
         }
 
+
         float dashCooldown = playerMovement.GetDashCooldown();
         dashCooldownInfo.text = dashCooldown == 0f ? "Dash \nReady" : $"Dash\n {dashCooldown}";
 
@@ -69,9 +71,11 @@ public class HUDManager : MonoBehaviour
         int level = playerLevel.GetLevel();
         levelInfo.text = $"Level {level}";
 
-        float xpPercentage = playerLevel.GetPercentageToNextLevel();
-        //Debug.Log(xpPercentage);
-        xpBar.fillAmount = xpPercentage; 
+        // float xpPercentage = playerLevel.GetPercentageToNextLevel();
+        // xpBar.fillAmount = xpPercentage; 
+
+        var (mins, secs) = GameManager.Instance.GetCurrentTime();
+        timer.text = $"{mins}:{secs}";
     }
 
     public void Reload(float duration)
