@@ -180,7 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c068cf5b8d358540a34ee6aae62b984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potatoValue: 0
+  potatoValue: 3
+  hoverHeight: 0.3
+  hoverSpeed: 1.8
+  steps: 9
 --- !u!50 &-7094703178118920958
 Rigidbody2D:
   serializedVersion: 5

@@ -9,6 +9,11 @@ public class PlayerShoot : MonoBehaviour
     private bool canFire;
     [SerializeField]
     private int potatoes;
+    public int Potatoes
+    {
+        get {return potatoes;}
+        set {potatoes = value;}   
+    }
     public Gun[] guns; 
 
 
