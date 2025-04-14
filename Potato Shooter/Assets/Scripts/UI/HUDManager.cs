@@ -1,35 +1,14 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using System.Collections;
-using System;
 
 public class HUDManager : MonoBehaviour
 {
-    public static HUDManager Instance { get; private set; } // Singleton instance
-
     public TextMeshProUGUI weaponsInfo;
     public TextMeshProUGUI dashCooldownInfo;
     public TextMeshProUGUI healthInfo;
-    public TextMeshProUGUI levelInfo;
-    public Image redCircle;
-    public Image xpBar;
-
     private PlayerShoot playerShoot;
     private PlayerMovement playerMovement;
     private PlayerHealth playerHealth;
-    private PlayerLevel playerLevel;
-
-    void Awake()
-    {
-        // Set up Singleton
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
     void Start()
     {
@@ -39,13 +18,6 @@ public class HUDManager : MonoBehaviour
             playerShoot = player.GetComponent<PlayerShoot>();
             playerMovement = player.GetComponent<PlayerMovement>();
             playerHealth = player.GetComponent<PlayerHealth>();
-            playerLevel = player.GetComponent<PlayerLevel>();
-        }
-
-        if (redCircle != null)
-        {
-            redCircle.gameObject.SetActive(false);
-            redCircle.fillAmount = 0f;
         }
     }
 
@@ -53,51 +25,24 @@ public class HUDManager : MonoBehaviour
     {
         if (playerShoot != null && playerShoot.equippedGun >= 0 && playerShoot.equippedGun < playerShoot.guns.Length)
         {
-            Gun gun = playerShoot.guns[playerShoot.equippedGun];
+            Gun gun = playerShoot.guns[playerShoot.equippedGun]; // Access the equipped gun
             weaponsInfo.text = $"{gun.name}\nAmmo: {gun.currentAmmo}/{gun.maxAmmo}";
         }
         else
         {
             weaponsInfo.text = "No Weapon Equipped";
         }
-
         float dashCooldown = playerMovement.GetDashCooldown();
-        dashCooldownInfo.text = dashCooldown == 0f ? "Dash \nReady" : $"Dash\n {dashCooldown}";
+        if(dashCooldown == 0f)
+        {
+            dashCooldownInfo.text = "Dash \nReady";
+        }
+        else
+        {
+            dashCooldownInfo.text = $"Dash\n {dashCooldown}";
+        }
 
         float currentHealth = playerHealth.getHealth();
         healthInfo.text = $"{currentHealth} HP";
-        int level = playerLevel.GetLevel();
-        levelInfo.text = $"Level {level}";
-
-        float xpPercentage = playerLevel.GetPercentageToNextLevel();
-        //Debug.Log(xpPercentage);
-        xpBar.fillAmount = xpPercentage; 
-    }
-
-    public void Reload(float duration)
-    {
-        if (redCircle != null)
-        {
-            StopAllCoroutines();
-            StartCoroutine(PlayRedCircleAnimation(duration));
-        }
-    }
-
-
-    private IEnumerator PlayRedCircleAnimation(float duration)
-    {
-        redCircle.gameObject.SetActive(true);
-        redCircle.fillAmount = 0f;
-
-        float timer = 0f;
-        while (timer < duration)
-        {
-            timer += Time.deltaTime;
-            redCircle.fillAmount = Mathf.Clamp01(timer / duration);
-            yield return null;
-        }
-
-        redCircle.gameObject.SetActive(false);
     }
 }
-
