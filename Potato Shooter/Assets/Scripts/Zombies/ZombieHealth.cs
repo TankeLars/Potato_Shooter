@@ -7,6 +7,8 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     [SerializeField] private float maxPotatoes = 5;
     [SerializeField] private GameObject player;
 
+    [SerializeField] private Animator animator;
+
 
     Vector3 Position { get { return transform.position; } }
 
@@ -14,12 +16,13 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
 
     }
 
@@ -31,6 +34,13 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     public void EatPotatoes(float potatoes)
     {
         potatoesEaten += potatoes; // add the potatoes to the counter
+        if (potatoesEaten >= maxPotatoes * 0.2f && debuffLevel == 0)
+        {
+            Debug.Log("Chonk 1");
+            animator.SetTrigger("GoChonk1");
+            debuffLevel = 1;
+        }
+
         if (potatoesEaten >= maxPotatoes)
         {
             Die();

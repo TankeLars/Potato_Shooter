@@ -68,7 +68,11 @@ public class ZombieMovement : MonoBehaviour
             attackCooldownTimer -= Time.deltaTime;
         }
     }
-
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
