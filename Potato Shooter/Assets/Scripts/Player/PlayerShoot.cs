@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngineInternal;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -8,15 +7,21 @@ public class PlayerShoot : MonoBehaviour
     private bool isFiring;
     private bool isReloading;
     private bool canFire;
-
+    [SerializeField]
+    private int potatoes;
+    public int Potatoes
+    {
+        get {return potatoes;}
+        set {potatoes = value;}   
+    }
     public Gun[] guns; 
+
 
     private void Start()
     {
         isFiring = false;
         isReloading = false;
         canFire = true;
-
         guns = new Gun[transform.childCount];
 
 
@@ -36,8 +41,16 @@ public class PlayerShoot : MonoBehaviour
         }
         if (isReloading && guns[equippedGun] != null)
         {
-            guns[equippedGun].Reload();
-            isReloading = false; 
+            if(potatoes > 0)
+            {
+                guns[equippedGun].Reload();
+                potatoes--;
+                isReloading = false; 
+            }
+            else
+            {
+                //no ammo thing
+            }
         }
     }
 
@@ -123,5 +136,10 @@ public class PlayerShoot : MonoBehaviour
         {
             guns[equippedGun].gameObject.SetActive(true);
         }
+    }
+
+    public void PotatoPickup(int amount)
+    {
+        potatoes += amount;
     }
 }
