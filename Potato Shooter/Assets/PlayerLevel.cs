@@ -35,8 +35,6 @@ public class PlayerLevel : MonoBehaviour
     public void AddXP(int amount)
     {
         currentXP += amount;
-        Debug.Log("Gained XP: " + amount + ", Total XP: " + currentXP);
-
         while (currentXP >= xpToNextLevel)
         {
             currentXP -= xpToNextLevel;
