@@ -284,8 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecc1c25ace10df4c8b47cd924714d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 0
-  seconds: 10
+  minutes: 1
+  seconds: 0
 --- !u!4 &151785395
 Transform:
   m_ObjectHideFlags: 0
@@ -1718,7 +1718,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 151785394}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ResetGame
         m_Mode: 1
