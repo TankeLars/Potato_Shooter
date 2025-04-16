@@ -105,6 +105,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 
     // Helper method to check if timer is running
     public bool IsTimerRunning()

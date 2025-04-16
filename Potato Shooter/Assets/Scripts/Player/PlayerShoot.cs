@@ -39,13 +39,13 @@ public class PlayerShoot : MonoBehaviour
         {
             guns[equippedGun].AttemptFire(); 
         }
-        if (isReloading && guns[equippedGun] != null)
+        if (isReloading && guns[equippedGun].isReloading == false)
         {
             if(potatoes > 0)
             {
                 guns[equippedGun].Reload();
-                potatoes--;
                 isReloading = false; 
+                potatoes--;
             }
             else
             {

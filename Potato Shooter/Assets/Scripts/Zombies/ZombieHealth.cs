@@ -5,6 +5,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     [SerializeField] private int debuffLevel = 0;
     [SerializeField] private float potatoesEaten = 0;
     [SerializeField] private float maxPotatoes = 5;
+    [SerializeField] private int xpOnDeath = 25;
     [SerializeField] private GameObject player;
 
 
@@ -39,6 +40,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        PlayerLevel.Instance.AddXP(xpOnDeath);
         Destroy(gameObject);
         ZombieSpawner zombieSpawner = player.GetComponent<ZombieSpawner>();
         zombieSpawner.currentZombies--;

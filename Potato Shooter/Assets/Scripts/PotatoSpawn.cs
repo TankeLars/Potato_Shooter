@@ -36,7 +36,7 @@ public class PotatoSpawn : MonoBehaviour
             SpawnPoint spawnPoint = tile.GetComponent<SpawnPoint>();
             if (spawnPoint != null && !spawnPoint.HasPotato)
             {
-                Debug.Log("Spawning potato at " + tile.transform.position);
+                //Debug.Log("Spawning potato at " + tile.transform.position);
                 Instantiate(potatoPrefab, tile.transform.position, Quaternion.identity);
                 return; // Exit after successful spawn
             }

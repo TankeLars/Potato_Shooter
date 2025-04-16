@@ -34,6 +34,7 @@ public class PlayerLevel : MonoBehaviour
 
     public void AddXP(int amount)
     {
+        Debug.Log("xp gained");
         currentXP += amount;
         while (currentXP >= xpToNextLevel)
         {
@@ -60,6 +61,7 @@ public class PlayerLevel : MonoBehaviour
         // percentage should be 0.10, but it is not working
 
         float percentage = (float)currentXP / xpToNextLevel;
+        //Debug.Log(percentage);
         return percentage;
     }
 

@@ -123,6 +123,7 @@ public class Gun : MonoBehaviour
         if (!isReloading && currentAmmo < maxAmmo)
         {
             isReloading = true;
+            HUDManager.Instance.Reload(reloadTime);
         }
     }
 }

@@ -71,8 +71,9 @@ public class HUDManager : MonoBehaviour
         int level = playerLevel.GetLevel();
         levelInfo.text = $"Level {level}";
 
-        // float xpPercentage = playerLevel.GetPercentageToNextLevel();
-        // xpBar.fillAmount = xpPercentage; 
+        float xpPercentage = playerLevel.GetPercentageToNextLevel();
+        Debug.Log(xpPercentage);
+        xpBar.fillAmount = xpPercentage; 
 
         var (mins, secs) = GameManager.Instance.GetCurrentTime();
         timer.text = $"{mins}:{secs}";
