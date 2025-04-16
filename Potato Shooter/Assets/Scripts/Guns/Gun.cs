@@ -13,14 +13,11 @@ public class Gun : MonoBehaviour
     public int currentAmmo;
     public float reloadTime = 2f;
     private float reloadTimer = 0f;
-    private AudioSource audioSource;
-
     private float shotTimer = 0f;
     public float timeBetweenShots = 0.2f;
 
     public bool singleShot;
     public int bulletAmount;
-    public int pierceAmount;
 
     public float spreadAngle = 10f;  
     public float potatoDamage; 
@@ -28,7 +25,6 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         currentAmmo = maxAmmo;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
@@ -75,7 +71,6 @@ public class Gun : MonoBehaviour
     {
         if (currentAmmo == 0)
         {
-            Reload();
             return false;
         }
 
@@ -117,7 +112,6 @@ public class Gun : MonoBehaviour
         
         if (bulletScript != null)
         {
-            bulletScript.pierceAmount = pierceAmount;
             bulletScript.angle = angleOffset;       
             bulletScript.potatoDamage = potatoDamage;     
             bulletScript.force = bulletForce;       
@@ -129,8 +123,6 @@ public class Gun : MonoBehaviour
         if (!isReloading && currentAmmo < maxAmmo)
         {
             isReloading = true;
-            HUDManager.Instance?.Reload(reloadTime);
-            audioSource.Play();
         }
     }
 }

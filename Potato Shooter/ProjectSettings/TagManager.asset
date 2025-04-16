@@ -8,6 +8,8 @@ TagManager:
   - Undefined
   - ZombieCollider
   - Zombie
+  - AmmoSpawn
+  - Potato
   layers:
   - Default
   - TransparentFX

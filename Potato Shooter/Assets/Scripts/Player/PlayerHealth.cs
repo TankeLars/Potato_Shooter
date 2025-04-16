@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        if(currentHealth <= 0)
+        if(currentHealth < 0)
         {
             currentHealth = 0f;
             OnDeath();
