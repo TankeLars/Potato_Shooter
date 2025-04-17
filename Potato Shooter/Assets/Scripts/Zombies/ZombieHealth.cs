@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ZombieHealth : MonoBehaviour, IDamageable
 {
@@ -9,6 +10,8 @@ public class ZombieHealth : MonoBehaviour, IDamageable
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+
 
     Vector3 Position { get { return transform.position; } }
 
@@ -17,18 +20,27 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     {
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
+        Debug.Log(spriteRenderer.color);
     }
 
     public void DoDamage(float damage)
     {
+        StartCoroutine(FlashRoutine());
         EatPotatoes(damage);
+
+    }
+    private IEnumerator FlashRoutine()
+    {
+        spriteRenderer.color = new Color(1f, 0.392f, 0.392f, 1f); // Change color to red
+        yield return new WaitForSeconds(0.2f); // Wait for 0.2s
+        spriteRenderer.color = new Color(1, 1, 1, 1); // Change color to normal
+
     }
 
     public void EatPotatoes(float potatoes)

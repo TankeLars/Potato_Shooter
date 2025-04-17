@@ -244,7 +244,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.13668144, y: 0.08200866}
+  m_Offset: {x: 0, y: 0.08200866}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.38977304, y: 0.43969953}
@@ -254,7 +254,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.24, y: 1.36}
+  m_Size: {x: 1, y: 1.36}
   m_EdgeRadius: 0
 --- !u!114 &7370493933991268837
 MonoBehaviour:
@@ -269,13 +269,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  movementDebuff: 0
   attackRange: 1.25
   attackDamage: 1
   attackCooldown: 1
   attackCooldownTimer: 0
   player: {fileID: 0}
   isPlayerInRange: 0
+  debuffLevel: 0
 --- !u!114 &1690356995058879772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,3 +293,4 @@ MonoBehaviour:
   maxPotatoes: 5
   player: {fileID: 0}
   animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
