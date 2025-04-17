@@ -27,9 +27,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private IEnumerator FlashRoutine()
     {
+        Color normalColor = spriteRenderer.color; // Store the current color
         spriteRenderer.color = new Color(1f, 0.392f, 0.392f, 1f); // Change color to red
         yield return new WaitForSeconds(0.2f); // Wait for 0.2s
-        spriteRenderer.color = new Color(1, 1, 1, 1); // Change color to normal
+        spriteRenderer.color = normalColor; // Change color to normal
 
     }
 
