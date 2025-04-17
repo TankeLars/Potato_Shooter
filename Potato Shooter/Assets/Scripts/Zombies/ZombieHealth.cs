@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int debuffLevel = 0;
+    [SerializeField] public int debuffLevel = 0;
     [SerializeField] private float potatoesEaten = 0;
     [SerializeField] private float maxPotatoes = 5;
     [SerializeField] private GameObject player;
@@ -34,11 +34,19 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     public void EatPotatoes(float potatoes)
     {
         potatoesEaten += potatoes; // add the potatoes to the counter
-        if (potatoesEaten >= maxPotatoes * 0.2f && debuffLevel == 0)
+
+        if (potatoesEaten > maxPotatoes * 0.2f && potatoesEaten < maxPotatoes * 0.65f && debuffLevel == 0)
         {
             Debug.Log("Chonk 1");
             animator.SetTrigger("GoChonk1");
             debuffLevel = 1;
+        }
+
+        if (potatoesEaten >= maxPotatoes * 0.65f && debuffLevel == 1)
+        {
+            Debug.Log("Chonk 2");
+            animator.SetTrigger("GoChonk2");
+            debuffLevel = 2;
         }
 
         if (potatoesEaten >= maxPotatoes)

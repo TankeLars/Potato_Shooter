@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 04b5725a5da498a45b247e798cd07d62
+guid: 456c0d011394bb3438f3aeacbbcaea9a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6179477647553322689
-    second: zombie-idle-chonk1_0
+      213: -4583464704047080296
+    second: zombie-idle-chonk1 1_0
   - first:
-      213: -382178144069748927
-    second: zombie-idle-chonk1_1
+      213: 6229192370784888444
+    second: zombie-idle-chonk1 1_1
   - first:
-      213: -2609920154261768388
-    second: zombie-idle-chonk1_2
+      213: 4405844916231859451
+    second: zombie-idle-chonk1 1_2
   - first:
-      213: 2013332098470685428
-    second: zombie-idle-chonk1_3
+      213: 5953747544376609816
+    second: zombie-idle-chonk1 1_3
   - first:
-      213: 6155190955216462130
-    second: zombie-idle-chonk1_4
+      213: 7843252144595079771
+    second: zombie-idle-chonk1 1_4
   - first:
-      213: 9061948735672035857
-    second: zombie-idle-chonk1_5
+      213: -2784901612051038001
+    second: zombie-idle-chonk1 1_5
   - first:
-      213: 4837500002016611675
-    second: zombie-idle-chonk1_6
+      213: -8973557782038964306
+    second: zombie-idle-chonk1 1_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,155 +118,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zombie-idle-chonk1_0
+      name: zombie-idle-chonk1 1_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 10
         y: 0
-        width: 32
+        width: 31
         height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f312e10e1d51e3aa0800000000000000
-      internalID: -6179477647553322689
+      spriteID: 89c9bbac2234460c0800000000000000
+      internalID: -4583464704047080296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-idle-chonk1_1
+      name: zombie-idle-chonk1 1_1
       rect:
         serializedVersion: 2
-        x: 60
+        x: 58
         y: 0
-        width: 32
+        width: 31
         height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 147fdc9b00b32baf0800000000000000
-      internalID: -382178144069748927
+      spriteID: c76e4322579827650800000000000000
+      internalID: 6229192370784888444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-idle-chonk1_2
+      name: zombie-idle-chonk1 1_2
       rect:
         serializedVersion: 2
-        x: 108
+        x: 106
         y: 0
-        width: 32
+        width: 31
         height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3738199273b7cbd0800000000000000
-      internalID: -2609920154261768388
+      spriteID: bfce57fab94b42d30800000000000000
+      internalID: 4405844916231859451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-idle-chonk1_3
+      name: zombie-idle-chonk1 1_3
       rect:
         serializedVersion: 2
-        x: 156
+        x: 154
         y: 0
-        width: 32
+        width: 31
         height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4faac3060eac0fb10800000000000000
-      internalID: 2013332098470685428
+      spriteID: 81c0ce8e8d5ff9250800000000000000
+      internalID: 5953747544376609816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-idle-chonk1_4
+      name: zombie-idle-chonk1 1_4
       rect:
         serializedVersion: 2
-        x: 204
+        x: 202
         y: 0
-        width: 32
+        width: 31
         height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 231ef5aef81ab6550800000000000000
-      internalID: 6155190955216462130
+      spriteID: b52196a2544d8dc60800000000000000
+      internalID: 7843252144595079771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-idle-chonk1_5
+      name: zombie-idle-chonk1 1_5
       rect:
         serializedVersion: 2
-        x: 252
+        x: 250
         y: 0
-        width: 32
+        width: 31
         height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11a2882ec5282cd70800000000000000
-      internalID: 9061948735672035857
+      spriteID: fc009472dba0a59d0800000000000000
+      internalID: -2784901612051038001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-idle-chonk1_6
+      name: zombie-idle-chonk1 1_6
       rect:
         serializedVersion: 2
-        x: 300
+        x: 298
         y: 0
-        width: 32
-        height: 37
+        width: 31
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5dc6252f90422340800000000000000
-      internalID: 4837500002016611675
+      spriteID: ea7102ebdb4877380800000000000000
+      internalID: -8973557782038964306
       vertices: []
       indices: 
       edges: []
@@ -275,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5c1395b2344ee5045a98589c248ce1b1
+    spriteID: 1b10adab211ef684b98c674bfd51d0a7
     internalID: 0
     vertices: []
     indices: 
@@ -285,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      zombie-idle-chonk1_0: -6179477647553322689
-      zombie-idle-chonk1_1: -382178144069748927
-      zombie-idle-chonk1_2: -2609920154261768388
-      zombie-idle-chonk1_3: 2013332098470685428
-      zombie-idle-chonk1_4: 6155190955216462130
-      zombie-idle-chonk1_5: 9061948735672035857
-      zombie-idle-chonk1_6: 4837500002016611675
+      zombie-idle-chonk1 1_0: -4583464704047080296
+      zombie-idle-chonk1 1_1: 6229192370784888444
+      zombie-idle-chonk1 1_2: 4405844916231859451
+      zombie-idle-chonk1 1_3: 5953747544376609816
+      zombie-idle-chonk1 1_4: 7843252144595079771
+      zombie-idle-chonk1 1_5: -2784901612051038001
+      zombie-idle-chonk1 1_6: -8973557782038964306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

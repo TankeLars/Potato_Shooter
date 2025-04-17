@@ -13,6 +13,8 @@ public class ZombieMovement : MonoBehaviour
 
     [SerializeField] private bool isPlayerInRange = false;
 
+    [SerializeField] public int debuffLevel;
+
     private SpriteRenderer spriteRenderer;
 
 
@@ -21,6 +23,7 @@ public class ZombieMovement : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject
+        debuffLevel = GetComponent<ZombieHealth>().debuffLevel; // Get the debuffLevel component
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
 
     }
@@ -47,8 +50,27 @@ public class ZombieMovement : MonoBehaviour
                 if (attackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.transform.position) <= attackRange)
                 {
                     IDamageable damageable = player.GetComponent<IDamageable>();
-                    damageable.DoDamage(attackDamage);
-                    attackCooldownTimer = attackCooldown;
+
+                    if (debuffLevel == 0)
+                    {
+                        damageable.DoDamage(attackDamage);
+                        attackCooldownTimer = attackCooldown;
+
+                    }
+
+                    if (debuffLevel == 1)
+                    {
+                        damageable.DoDamage((float)(attackDamage * 2));
+                        attackCooldownTimer = attackCooldown;
+
+                    }
+
+                    if (debuffLevel == 2)
+                    {
+                        damageable.DoDamage((float)(attackDamage * 3));
+                        attackCooldownTimer = attackCooldown;
+
+                    }
                 }
             }
         }

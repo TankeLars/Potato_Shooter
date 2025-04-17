@@ -1,19 +1,28 @@
 fileFormatVersion: 2
-guid: 786704aca862bcd45bc9a62b3f2f5e00
+guid: 82f119d359c5fd34ead9835d478853e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5879547397208681204
-    second: zombie-walk_0
+      213: 740909275660242456
+    second: zombie-idle-chonk2_0
   - first:
-      213: 703362417598110713
-    second: zombie-walk_1
+      213: 6299356610788942034
+    second: zombie-idle-chonk2_1
   - first:
-      213: -2143625693107730677
-    second: zombie-walk_2
+      213: -718130219945726018
+    second: zombie-idle-chonk2_2
   - first:
-      213: 1891443499671603337
-    second: zombie-walk_3
+      213: 3535346903129918329
+    second: zombie-idle-chonk2_3
+  - first:
+      213: 1894427302524401696
+    second: zombie-idle-chonk2_4
+  - first:
+      213: -6957681086026108014
+    second: zombie-idle-chonk2_5
+  - first:
+      213: 4370748627246392289
+    second: zombie-idle-chonk2_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,89 +118,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zombie-walk_0
+      name: zombie-chonk2_0
       rect:
         serializedVersion: 2
-        x: 11
+        x: 8
         y: 0
-        width: 31
-        height: 35
+        width: 33
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4fa22b2e439589150800000000000000
-      internalID: 5879547397208681204
+      spriteID: 1284bd83c611aa44c859ac8b6471a667
+      internalID: -1761579893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-walk_1
+      name: zombie-chonk2_1
       rect:
         serializedVersion: 2
-        x: 59
+        x: 56
         y: 0
-        width: 31
-        height: 34
+        width: 33
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9fb9b496468d2c900800000000000000
-      internalID: 703362417598110713
+      spriteID: 141c4354eacffc24cb3ca0546450c557
+      internalID: -1213616839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-walk_2
+      name: zombie-chonk2_2
       rect:
         serializedVersion: 2
-        x: 107
+        x: 104
         y: 0
-        width: 31
-        height: 35
+        width: 33
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b07c9ee1acf4042e0800000000000000
-      internalID: -2143625693107730677
+      spriteID: 5cef5ce5ea0f696408d5b95369c5b13a
+      internalID: -1090223343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie-walk_3
+      name: zombie-chonk2_3
       rect:
         serializedVersion: 2
-        x: 155
+        x: 152
         y: 0
-        width: 31
-        height: 34
+        width: 33
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 988c5a677d1cf3a10800000000000000
-      internalID: 1891443499671603337
+      spriteID: 9c59d145f2513744d8757bb0c30f429c
+      internalID: 1739502447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie-chonk2_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172b3b1c7fe2d054b9f46b59192e9577
+      internalID: 1690246420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie-chonk2_5
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 0
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57bf4370bcd5cb41806074d2237ae7f
+      internalID: -49588648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie-chonk2_6
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 0
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a703831f4821c2549a1f11ee66d7a235
+      internalID: -89420979
       vertices: []
       indices: 
       edges: []
@@ -200,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a5b9f49c5a4341c48ad1aa58a9b25589
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      zombie-walk_0: 5879547397208681204
-      zombie-walk_1: 703362417598110713
-      zombie-walk_2: -2143625693107730677
-      zombie-walk_3: 1891443499671603337
+      zombie-chonk2_0: -1761579893
+      zombie-chonk2_1: -1213616839
+      zombie-chonk2_2: -1090223343
+      zombie-chonk2_3: 1739502447
+      zombie-chonk2_4: 1690246420
+      zombie-chonk2_5: -49588648
+      zombie-chonk2_6: -89420979
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
