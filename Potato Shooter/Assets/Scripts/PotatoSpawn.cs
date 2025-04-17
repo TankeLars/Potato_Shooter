@@ -40,10 +40,10 @@ public class PotatoSpawn : MonoBehaviour
                 Instantiate(potatoPrefab, tile.transform.position, Quaternion.identity);
                 return; // Exit after successful spawn
             }
-            Debug.Log("Position blocked at " + tile.transform.position);
+            //Debug.Log("Position blocked at " + tile.transform.position);
         }
         
-        Debug.Log("No available spawn positions found");
+        //Debug.Log("No available spawn positions found");
     }
 
     // Fisher-Yates shuffle algorithm
