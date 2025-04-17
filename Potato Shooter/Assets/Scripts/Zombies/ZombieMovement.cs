@@ -3,7 +3,6 @@ using UnityEngine;
 public class ZombieMovement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float movementDebuff;
     [SerializeField] private float attackRange;
     [SerializeField] private float attackDamage;
     [SerializeField] private float attackCooldown;
@@ -23,7 +22,6 @@ public class ZombieMovement : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject
-        debuffLevel = GetComponent<ZombieHealth>().debuffLevel; // Get the debuffLevel component
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
 
     }
@@ -31,6 +29,7 @@ public class ZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        debuffLevel = GetComponent<ZombieHealth>().debuffLevel; // Get the debuffLevel component
         if (isPlayerInRange) // Only move if the player is within range
         {
             MoveToPlayer();
@@ -43,7 +42,18 @@ public class ZombieMovement : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) > attackRange)
             {
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
+                float currentMovementSpeed = movementSpeed;
+
+                if (debuffLevel == 1)
+                {
+                    currentMovementSpeed *= 0.75f; // Move 25% slower at debuff level 1
+                }
+                else if (debuffLevel == 2)
+                {
+                    currentMovementSpeed *= 0.5f; // Move 50% slower at debuff level 2
+                }
+
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, currentMovementSpeed * Time.deltaTime);
             }
             else
             {
@@ -55,21 +65,16 @@ public class ZombieMovement : MonoBehaviour
                     {
                         damageable.DoDamage(attackDamage);
                         attackCooldownTimer = attackCooldown;
-
                     }
-
-                    if (debuffLevel == 1)
+                    else if (debuffLevel == 1)
                     {
-                        damageable.DoDamage((float)(attackDamage * 2));
+                        damageable.DoDamage(attackDamage * 2);
                         attackCooldownTimer = attackCooldown;
-
                     }
-
-                    if (debuffLevel == 2)
+                    else if (debuffLevel == 2)
                     {
-                        damageable.DoDamage((float)(attackDamage * 3));
+                        damageable.DoDamage(attackDamage * 3);
                         attackCooldownTimer = attackCooldown;
-
                     }
                 }
             }
