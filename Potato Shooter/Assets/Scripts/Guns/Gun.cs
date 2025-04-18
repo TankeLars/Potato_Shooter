@@ -86,7 +86,7 @@ public class Gun : MonoBehaviour
 
     private void Fire()
     {
-        if (singleShot)
+        if (bulletAmount == 1)
         {
             InstantiateBullet(0f);
         }

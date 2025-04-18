@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour
     private bool isFiring;
     private bool isReloading;
     private bool canFire;
+    public int bonusPotatoes;
     [SerializeField]
     private int potatoes;
     public int Potatoes
@@ -92,6 +93,7 @@ public class PlayerShoot : MonoBehaviour
 
     public void PotatoPickup(int amount)
     {
+        amount += bonusPotatoes;
         potatoes += amount;
     }
 }

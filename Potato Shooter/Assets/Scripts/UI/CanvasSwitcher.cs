@@ -5,6 +5,7 @@ public class CanvasSwitcher : MonoBehaviour
     [SerializeField] private Canvas inGameHUD;
     [SerializeField] private Canvas deathScreen;
     [SerializeField] private Canvas winScreen;
+    [SerializeField] private Canvas upgradeScreen;
 
 
 
@@ -13,6 +14,7 @@ public class CanvasSwitcher : MonoBehaviour
         EnsureCanvasGroup(inGameHUD);
         EnsureCanvasGroup(deathScreen);
         EnsureCanvasGroup(winScreen);
+        EnsureCanvasGroup(upgradeScreen);
         ShowinGameHUD();
     }
 
@@ -21,6 +23,7 @@ public class CanvasSwitcher : MonoBehaviour
         inGameHUD.gameObject.SetActive(true);
         deathScreen.gameObject.SetActive(false);
         winScreen.gameObject.SetActive(false);
+        upgradeScreen.gameObject.SetActive(false);
     }
 
     public void ShowDeathScreen()
@@ -28,13 +31,23 @@ public class CanvasSwitcher : MonoBehaviour
         inGameHUD.gameObject.SetActive(false);
         deathScreen.gameObject.SetActive(true);
         winScreen.gameObject.SetActive(false);
+        upgradeScreen.gameObject.SetActive(false);
     }
 
-        public void ShowWinScreen()
+    public void ShowWinScreen()
     {
         inGameHUD.gameObject.SetActive(false);
         deathScreen.gameObject.SetActive(false);
         winScreen.gameObject.SetActive(true);
+        upgradeScreen.gameObject.SetActive(false);
+    }
+
+    public void ShowUpgradeScreen()
+    {
+        inGameHUD.gameObject.SetActive(false);
+        deathScreen.gameObject.SetActive(false);
+        winScreen.gameObject.SetActive(false);
+        upgradeScreen.gameObject.SetActive(true);
     }
 
     private void EnsureCanvasGroup(Canvas canvas)

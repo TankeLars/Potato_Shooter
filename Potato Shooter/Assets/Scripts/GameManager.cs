@@ -94,12 +94,23 @@ public class GameManager : MonoBehaviour
         StopTimer();
         if (canvasSwitcher != null)
         {
+            Time.timeScale = 0;
             canvasSwitcher.ShowWinScreen();
         }
         else
         {
             Debug.LogWarning("CanvasSwitcher instance not found!");
         }
+    }
+    public void ShowUpgradeScreen()
+    {
+        Time.timeScale = 0;
+        canvasSwitcher.ShowUpgradeScreen();
+    }
+    public void ContinueGame()
+    {
+        Time.timeScale = 1;
+        canvasSwitcher.ShowinGameHUD();
     }
 
     public void ResetGame()

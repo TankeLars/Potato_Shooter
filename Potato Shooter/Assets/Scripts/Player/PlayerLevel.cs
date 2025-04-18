@@ -34,7 +34,6 @@ public class PlayerLevel : MonoBehaviour
 
     public void AddXP(int amount)
     {
-        Debug.Log("xp gained");
         currentXP += amount;
         while (currentXP >= xpToNextLevel)
         {
@@ -46,8 +45,8 @@ public class PlayerLevel : MonoBehaviour
     private void LevelUp()
     {
         level++;
+        GameManager.Instance.ShowUpgradeScreen();
         xpToNextLevel = CalculateXPForNextLevel(level);
-        Debug.Log("Level Up! New Level: " + level);
     }
 
     private int CalculateXPForNextLevel(int currentLevel)

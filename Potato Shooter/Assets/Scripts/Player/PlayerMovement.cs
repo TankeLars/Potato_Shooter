@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashSpeed = 40f;
     [SerializeField] private float dashDuration = 0.1f;
     [SerializeField] private float dashCooldownTime = 5f;
-
+    private float baseMovementSpeed;
     private enum DashState { Ready, Dashing, Cooldown }
     private DashState dashState = DashState.Ready;
 
@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         playerShoot = GetComponent<PlayerShoot>();
+        baseMovementSpeed = movementSpeed;
     }
 
     void Update()
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
                 dashState = DashState.Cooldown;
                 dashTimer = 0f;
                 cooldownTimer = dashCooldownTime;
-                movementSpeed = 7.5f;
+                movementSpeed = baseMovementSpeed;
                 playerShoot.toggleOnFireAbility();
             }
         }
@@ -76,11 +77,23 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+    public void ApplySpeedMultiplier(float multiplier)
+    {
+        movementSpeed *= multiplier;
+    }
+
+    public void ApplyDashCooldownReduction(float reductionMultiplier)
+    {
+        dashCooldownTime *= reductionMultiplier;
+    }
+
 
     public void OnDash()
     {
+
         if (dashState == DashState.Ready)
         {
+            baseMovementSpeed = movementSpeed;
             dashState = DashState.Dashing;
             movementSpeed = dashSpeed;
             playerShoot.toggleOffFireAbility(); 

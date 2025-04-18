@@ -27,14 +27,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         GameManager.Instance.ShowDeathScreen();
     }
 
-    void Heal(float healAmount)
-    {
-        currentHealth += healAmount;
-        if (currentHealth >= maxHealth)
+
+    public void AddBonusHealth(int bonus)
         {
-            currentHealth = maxHealth;
+            maxHealth += bonus;
+            currentHealth += bonus;
         }
-    }
+
 
     public float getHealth()
     {
