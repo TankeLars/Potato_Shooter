@@ -528,103 +528,6 @@ RectTransform:
   m_AnchoredPosition: {x: -599, y: -263}
   m_SizeDelta: {x: 658.025, y: 262.8}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &683942297
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1690356995058879772, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: maxPotatoes
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -15.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2576637832799848044, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2940928142362407440, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_Name
-      value: zombie_Buff
-      objectReference: {fileID: 0}
-    - target: {fileID: 4039771067093988865, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4039771067093988865, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_Color.g
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 4039771067093988865, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.039215688
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370493933991268837, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: attackRange
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370493933991268837, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: attackDamage
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370493933991268837, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: movementSpeed
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370493933991268837, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
-      propertyPath: attackCooldown
-      value: 1.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
 --- !u!1 &972579874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1512,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986836001}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92382d38a83d0ae4992d13d54d7a2e4d, type: 3}
   m_Name: 
@@ -1620,7 +1523,9 @@ MonoBehaviour:
   maxZombiesAmount: 3
   maxZombies: 50
   currentZombies: 0
-  zombiePrefab: {fileID: 2940928142362407440, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
+  normalZombie: {fileID: 2940928142362407440, guid: 03d0b80409455504695d813e1e561a8f, type: 3}
+  crawlerZombie: {fileID: 5054582874577008854, guid: dddd9c923464f754bb9c9349a59c66f5, type: 3}
+  buffZombie: {fileID: 3118504444266711074, guid: 265cdb542ff2dc54aa52ab5f4f9a73a8, type: 3}
   spawnRadius: 25
   minDistance: 10
 --- !u!1 &2025873903
@@ -9372,4 +9277,3 @@ SceneRoots:
   - {fileID: 7199565062215320220}
   - {fileID: 1215055565}
   - {fileID: 1835093656}
-  - {fileID: 683942297}
