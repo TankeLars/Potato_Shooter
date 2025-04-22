@@ -45,8 +45,8 @@ public class PlayerLevel : MonoBehaviour
     private void LevelUp()
     {
         level++;
+        GameManager.Instance.ShowUpgradeScreen();
         xpToNextLevel = CalculateXPForNextLevel(level);
-        Debug.Log("Level Up! New Level: " + level);
     }
 
     private int CalculateXPForNextLevel(int currentLevel)
@@ -60,6 +60,7 @@ public class PlayerLevel : MonoBehaviour
         // percentage should be 0.10, but it is not working
 
         float percentage = (float)currentXP / xpToNextLevel;
+        //Debug.Log(percentage);
         return percentage;
     }
 

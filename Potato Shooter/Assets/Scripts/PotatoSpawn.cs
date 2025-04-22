@@ -36,14 +36,14 @@ public class PotatoSpawn : MonoBehaviour
             SpawnPoint spawnPoint = tile.GetComponent<SpawnPoint>();
             if (spawnPoint != null && !spawnPoint.HasPotato)
             {
-                Debug.Log("Spawning potato at " + tile.transform.position);
+                //Debug.Log("Spawning potato at " + tile.transform.position);
                 Instantiate(potatoPrefab, tile.transform.position, Quaternion.identity);
                 return; // Exit after successful spawn
             }
-            Debug.Log("Position blocked at " + tile.transform.position);
+            //Debug.Log("Position blocked at " + tile.transform.position);
         }
         
-        Debug.Log("No available spawn positions found");
+        //Debug.Log("No available spawn positions found");
     }
 
     // Fisher-Yates shuffle algorithm

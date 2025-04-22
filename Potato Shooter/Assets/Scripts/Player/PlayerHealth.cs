@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         StartCoroutine(FlashRoutine());
         currentHealth -= damageAmount;
-        if(currentHealth < 0)
+        if(currentHealth <= 0)
         {
             currentHealth = 0f;
             OnDeath();
@@ -40,14 +40,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         GameManager.Instance.ShowDeathScreen();
     }
 
-    void Heal(float healAmount)
-    {
-        currentHealth += healAmount;
-        if (currentHealth >= maxHealth)
+
+    public void AddBonusHealth(int bonus)
         {
-            currentHealth = maxHealth;
+            maxHealth += bonus;
+            currentHealth += bonus;
         }
-    }
+
 
     public float getHealth()
     {

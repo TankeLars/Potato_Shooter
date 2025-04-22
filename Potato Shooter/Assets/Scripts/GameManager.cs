@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //Debug.Log(GameData.Instance.selectedGun.name);
         canvasSwitcher = FindFirstObjectByType<CanvasSwitcher>();
         StartTimer();
     }
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
         StopTimer();
         if (canvasSwitcher != null)
         {
+            Time.timeScale = 0;
             canvasSwitcher.ShowWinScreen();
         }
         else
@@ -100,10 +102,24 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("CanvasSwitcher instance not found!");
         }
     }
+    public void ShowUpgradeScreen()
+    {
+        Time.timeScale = 0;
+        canvasSwitcher.ShowUpgradeScreen();
+    }
+    public void ContinueGame()
+    {
+        Time.timeScale = 1;
+        canvasSwitcher.ShowinGameHUD();
+    }
 
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(1);
     }
 
     // Helper method to check if timer is running

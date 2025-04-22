@@ -3,18 +3,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] public int equippedGun; 
+    [SerializeField] public Gun equippedGun; // Now, it's a Gun reference, not an index
     private bool isFiring;
     private bool isReloading;
     private bool canFire;
+    public int bonusPotatoes;
     [SerializeField]
     private int potatoes;
     public int Potatoes
     {
-        get {return potatoes;}
-        set {potatoes = value;}   
+        get { return potatoes; }
+        set { potatoes = value; }   
     }
-    public Gun[] guns; 
+
 
 
     private void Start()
@@ -22,34 +23,37 @@ public class PlayerShoot : MonoBehaviour
         isFiring = false;
         isReloading = false;
         canFire = true;
-        guns = new Gun[transform.childCount];
 
 
-        for (int i = 0; i < transform.childCount; i++)
+        // Instantiate the gun stored in GameData.Instance.selectedGun if it's not null
+        if (GameData.Instance.selectedGun != null)
         {
-            guns[i] = transform.GetChild(i).GetComponent<Gun>();
+            equippedGun = Instantiate(GameData.Instance.selectedGun, transform);  // Instantiate the selected gun under the player
+            EquipGun();  // Equip the instantiated gun
         }
-
-        EquipGun();
+        else
+        {
+            Debug.LogError("No selected gun in GameData.");
+        }
     }
 
     private void Update()
     {
-        if (isFiring && guns[equippedGun] != null && canFire)
+        if (isFiring && equippedGun != null && canFire)
         {
-            guns[equippedGun].AttemptFire(); 
+            equippedGun.AttemptFire(); 
         }
-        if (isReloading && guns[equippedGun] != null)
+        if (isReloading && equippedGun != null && equippedGun.isReloading == false)
         {
-            if(potatoes > 0)
+            if (potatoes > 0)
             {
-                guns[equippedGun].Reload();
-                potatoes--;
+                equippedGun.Reload();
                 isReloading = false; 
+                potatoes--;
             }
             else
             {
-                //no ammo thing
+                // Handle no ammo case here
             }
         }
     }
@@ -63,6 +67,7 @@ public class PlayerShoot : MonoBehaviour
     {
         canFire = false;
     }
+
     private void OnShoot(InputValue value)
     {
         isFiring = value.isPressed;
@@ -73,73 +78,22 @@ public class PlayerShoot : MonoBehaviour
         isReloading = value.isPressed;
     }
 
-    private void OnSwitchWeapon()
-    {
-        SwitchWeapon(true);
-    }
-    void OnScrollWeapon(InputValue value)
-    {
-        float direction = value.Get<float>();
-        if(direction == 1)
-        {
-            SwitchWeapon(true);
-        }
-        else if (direction == -1)
-        {
-            SwitchWeapon(false);
-        }
-    }
-    private void SwitchWeapon(bool direction)
-    {
-        int previousGun = equippedGun;
-        if(direction)
-        {
-            if (equippedGun >= guns.Length - 1)
-            {
-                equippedGun = 0;
-            }
-            else
-            {
-                equippedGun++;
-            }
-        }
-        else
-        {
-            if (equippedGun <= 0)
-            {
-                equippedGun = guns.Length - 1;
-            }
-            else 
-            {
-                equippedGun--;
-            }
-        }
-        
-
-        if (previousGun != equippedGun)
-        {
-            EquipGun(); 
-        }
-    }
-    
+    // Removed the OnSwitchWeapon method as we no longer switch guns
+    // Removed OnScrollWeapon and SwitchWeapon methods as they are related to switching guns
 
     private void EquipGun()
     {
 
-        foreach (var gun in guns)
+        // Activate the currently equipped gun if it's valid
+        if (equippedGun != null)
         {
-            gun.gameObject.SetActive(false);
-        }
-
-
-        if (equippedGun >= 0 && equippedGun < guns.Length)
-        {
-            guns[equippedGun].gameObject.SetActive(true);
+            equippedGun.gameObject.SetActive(true);
         }
     }
 
     public void PotatoPickup(int amount)
     {
+        amount += bonusPotatoes;
         potatoes += amount;
     }
 }

@@ -55,7 +55,7 @@ MonoBehaviour:
   timeBetweenShots: 1.2
   singleShot: 1
   bulletAmount: 1
-  spreadAngle: 0
+  spreadAngle: 8
   potatoDamage: 10
   bulletForce: 30
 --- !u!1 &5225183095691390761

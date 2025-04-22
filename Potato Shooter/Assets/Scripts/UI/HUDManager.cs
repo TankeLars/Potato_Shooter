@@ -52,10 +52,17 @@ public class HUDManager : MonoBehaviour
 
     void Update()
     {
-        if (playerShoot != null && playerShoot.equippedGun >= 0 && playerShoot.equippedGun < playerShoot.guns.Length)
+        if (playerShoot != null)
         {
-            Gun gun = playerShoot.guns[playerShoot.equippedGun];
-            weaponsInfo.text = $"{gun.name}\nPotatoes: {gun.currentAmmo}/{gun.maxAmmo} \n{playerShoot.Potatoes} Magazines";
+            Gun gun = playerShoot.equippedGun;
+            string gunName = gun.name;
+            if (gunName.Contains("(Clone)"))
+            {
+                gunName = gunName.Replace("(Clone)", "").Trim();
+            }
+
+            weaponsInfo.text = $"{gunName}\nPotatoes: {gun.currentAmmo}/{gun.maxAmmo} \n{playerShoot.Potatoes} Magazines";
+
         }
         else
         {
@@ -71,8 +78,9 @@ public class HUDManager : MonoBehaviour
         int level = playerLevel.GetLevel();
         levelInfo.text = $"Level {level}";
 
-        // float xpPercentage = playerLevel.GetPercentageToNextLevel();
-        // xpBar.fillAmount = xpPercentage; 
+        float xpPercentage = playerLevel.GetPercentageToNextLevel();
+        //Debug.Log(xpPercentage);
+        xpBar.fillAmount = xpPercentage; 
 
         var (mins, secs) = GameManager.Instance.GetCurrentTime();
         timer.text = $"{mins}:{secs}";
