@@ -34,10 +34,21 @@ public class ExplodingBarrel : MonoBehaviour, IDamageable
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range);
         foreach (Collider2D collider in colliders)
         {
-            IDamageable damageable = collider.GetComponent<IDamageable>();
-            if (damageable != null)
+            if (collider.CompareTag("Player"))
             {
-                damageable.DoDamage(damage);
+                IDamageable damageable = collider.GetComponent<IDamageable>();
+                if (damageable != null)
+                {
+                    damageable.DoDamage(damage / 10f);
+                }
+            }
+            else
+            {
+                IDamageable damageable = collider.GetComponent<IDamageable>();
+                if (damageable != null)
+                {
+                    damageable.DoDamage(damage);
+                }
             }
         }
 

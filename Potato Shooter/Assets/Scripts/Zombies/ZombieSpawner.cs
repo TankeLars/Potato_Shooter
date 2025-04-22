@@ -9,7 +9,9 @@ public class ZombieSpawner : MonoBehaviour
     public int maxZombiesAmount = 3; // Maximum number of zombies to spawn
     public int maxZombies = 10; // Maximum number of zombies that can be spawned
     public int currentZombies = 0; // Current number of zombies spawned
-    public GameObject zombiePrefab; // Reference to the zombie prefab
+    public GameObject normalZombie; // Reference to the zombie prefab
+    public GameObject crawlerZombie; // Reference to the crawler zombie prefab
+    public GameObject buffZombie; // Reference to the buff zombie prefab
     public float spawnRadius = 25f; // Radius within which zombies can spawn
     public float minDistance = 10f; // Minimum distance between player and zombie spawn position
 
@@ -74,8 +76,24 @@ public class ZombieSpawner : MonoBehaviour
 
     void InstantiateZombie(Vector3 spawnPosition)
     {
-        // Instantiate zombie prefab at the specified spawn position
-        // Replace "ZombiePrefab" with the actual name of your zombie prefab
-        GameObject zombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
+        // Choose a random zombie prefab from the available options
+        int randomIndex = Random.Range(0, 10);
+        GameObject selectedPrefab = null;
+
+        if (randomIndex < 5)
+        {
+            selectedPrefab = normalZombie;
+        }
+        else if (randomIndex < 8)
+        {
+            selectedPrefab = crawlerZombie;
+        }
+        else
+        {
+            selectedPrefab = buffZombie;
+        }
+
+        // Instantiate the selected zombie prefab at the specified spawn position
+        GameObject zombie = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
     }
 }

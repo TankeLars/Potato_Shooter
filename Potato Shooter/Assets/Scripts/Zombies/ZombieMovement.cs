@@ -3,7 +3,6 @@ using UnityEngine;
 public class ZombieMovement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float movementDebuff;
     [SerializeField] private float attackRange;
     [SerializeField] private float attackDamage;
     [SerializeField] private float attackCooldown;
@@ -12,6 +11,8 @@ public class ZombieMovement : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [SerializeField] private bool isPlayerInRange = false;
+
+    [SerializeField] public int debuffLevel;
 
     private SpriteRenderer spriteRenderer;
 
@@ -28,6 +29,7 @@ public class ZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        debuffLevel = GetComponent<ZombieHealth>().debuffLevel; // Get the debuffLevel component
         if (isPlayerInRange) // Only move if the player is within range
         {
             MoveToPlayer();
@@ -40,15 +42,40 @@ public class ZombieMovement : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) > attackRange)
             {
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
+                float currentMovementSpeed = movementSpeed;
+
+                if (debuffLevel == 1)
+                {
+                    currentMovementSpeed *= 0.75f; // Move 25% slower at debuff level 1
+                }
+                else if (debuffLevel == 2)
+                {
+                    currentMovementSpeed *= 0.5f; // Move 50% slower at debuff level 2
+                }
+
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, currentMovementSpeed * Time.deltaTime);
             }
             else
             {
                 if (attackCooldownTimer <= 0 && Vector3.Distance(transform.position, player.transform.position) <= attackRange)
                 {
                     IDamageable damageable = player.GetComponent<IDamageable>();
-                    damageable.DoDamage(attackDamage);
-                    attackCooldownTimer = attackCooldown;
+
+                    if (debuffLevel == 0)
+                    {
+                        damageable.DoDamage(attackDamage);
+                        attackCooldownTimer = attackCooldown;
+                    }
+                    else if (debuffLevel == 1)
+                    {
+                        damageable.DoDamage(attackDamage * 2);
+                        attackCooldownTimer = attackCooldown;
+                    }
+                    else if (debuffLevel == 2)
+                    {
+                        damageable.DoDamage(attackDamage * 3);
+                        attackCooldownTimer = attackCooldown;
+                    }
                 }
             }
         }
@@ -68,7 +95,11 @@ public class ZombieMovement : MonoBehaviour
             attackCooldownTimer -= Time.deltaTime;
         }
     }
-
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
