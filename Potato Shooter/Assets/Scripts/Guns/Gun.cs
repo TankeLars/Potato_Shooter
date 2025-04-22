@@ -16,6 +16,7 @@ public class Gun : MonoBehaviour
     private float shotTimer = 0f;
     public float timeBetweenShots = 0.2f;
 
+    public int pierceAmount;
     public bool singleShot;
     public int bulletAmount;
 
@@ -112,6 +113,7 @@ public class Gun : MonoBehaviour
         
         if (bulletScript != null)
         {
+            bulletScript.pierceAmount = pierceAmount;
             bulletScript.angle = angleOffset;       
             bulletScript.potatoDamage = potatoDamage;     
             bulletScript.force = bulletForce;       

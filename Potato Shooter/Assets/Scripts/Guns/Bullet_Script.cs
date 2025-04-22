@@ -10,6 +10,7 @@ public class Bullet_Script : MonoBehaviour
     private float timePassed = 0;
     public float maxTime = 1;
 
+    public int pierceAmount;
     public float potatoDamage; 
     public float angle;  
 
@@ -45,6 +46,11 @@ public class Bullet_Script : MonoBehaviour
             {
                 damageable.DoDamage(potatoDamage);
             }
+            if(pierceAmount > 0){
+                 pierceAmount--;
+                 Debug.Log(pierceAmount);
+                 return;
+             }
 
             Destroy(gameObject);
         }

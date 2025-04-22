@@ -53,10 +53,11 @@ MonoBehaviour:
   currentAmmo: 5
   reloadTime: 2
   timeBetweenShots: 1.2
+  pierceAmount: 3
   singleShot: 1
   bulletAmount: 1
   spreadAngle: 8
-  potatoDamage: 10
+  potatoDamage: 4
   bulletForce: 30
 --- !u!1 &5225183095691390761
 GameObject:

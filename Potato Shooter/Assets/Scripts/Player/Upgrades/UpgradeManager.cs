@@ -31,10 +31,10 @@ public class UpgradeManager : MonoBehaviour
                 playerShoot.equippedGun.potatoDamage *= upgrade.value;
                 break;
             case StatType.MovementSpeedMultiplier:
-                playerMovement.ApplySpeedMultiplier(upgrade.value);
+                // playerMovement.ApplySpeedMultiplier(upgrade.value);
                 break;
             case StatType.DashCooldownReduction:
-                playerMovement.ApplyDashCooldownReduction(upgrade.value);
+                // playerMovement.ApplyDashCooldownReduction(upgrade.value);
                 break;
             case StatType.FireRateReduction:
                 playerShoot.equippedGun.timeBetweenShots *= upgrade.value;
