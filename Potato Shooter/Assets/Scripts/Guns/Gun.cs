@@ -24,8 +24,13 @@ public class Gun : MonoBehaviour
     public float potatoDamage; 
     public float bulletForce = 10f; 
 
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentAmmo = maxAmmo;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
@@ -102,6 +107,10 @@ public class Gun : MonoBehaviour
                 InstantiateBullet(angleOffset);
             }
         }
+        if (shootSound != null)
+        {
+            audioSource.PlayOneShot(shootSound);
+        }
     }
 
     private void InstantiateBullet(float angleOffset)
@@ -126,6 +135,10 @@ public class Gun : MonoBehaviour
         {
             isReloading = true;
             HUDManager.Instance.Reload(reloadTime);
+            if (reloadSound != null)
+            {
+                audioSource.PlayOneShot(reloadSound);
+            }
         }
     }
 }
