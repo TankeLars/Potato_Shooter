@@ -4,9 +4,9 @@ public class PlayerLevel : MonoBehaviour
 {
     public static PlayerLevel Instance { get; private set; }
 
-    private int level;
-    private int currentXP;
-    private int xpToNextLevel;
+    public int level;
+    public int currentXP;
+    public int xpToNextLevel;
 
     [SerializeField] private int baseXP = 100;
     [SerializeField] private float xpMultiplier = 1.5f;
@@ -47,6 +47,7 @@ public class PlayerLevel : MonoBehaviour
         level++;
         GameManager.Instance.ShowUpgradeScreen();
         xpToNextLevel = CalculateXPForNextLevel(level);
+        gameObject.GetComponent<ZombieSpawner>().IncreaseDifficulty();
     }
 
     private int CalculateXPForNextLevel(int currentLevel)

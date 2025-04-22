@@ -7,11 +7,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private float maxHealth;
     public float currentHealth;
     public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    public Color normalColor; // Variable to store the normal color of the sprite
 
     void Start()
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+        normalColor = spriteRenderer.color; // Store the current color
+
     }
 
     void TakeDamage(float damageAmount)
@@ -27,7 +30,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private IEnumerator FlashRoutine()
     {
-        Color normalColor = spriteRenderer.color; // Store the current color
         spriteRenderer.color = new Color(1f, 0.392f, 0.392f, 1f); // Change color to red
         yield return new WaitForSeconds(0.2f); // Wait for 0.2s
         spriteRenderer.color = normalColor; // Change color to normal

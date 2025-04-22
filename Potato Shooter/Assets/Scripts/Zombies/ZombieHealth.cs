@@ -12,6 +12,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     [SerializeField] private Animator animator;
 
     [SerializeField] SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    public Color normalColor; // Variable to store the normal color of the sprite
 
 
     Vector3 Position { get { return transform.position; } }
@@ -22,6 +23,8 @@ public class ZombieHealth : MonoBehaviour, IDamageable
         player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+        normalColor = spriteRenderer.color; // Store the current color
+
     }
 
     // Update is called once per frame
@@ -38,7 +41,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     }
     private IEnumerator FlashRoutine()
     {
-        Color normalColor = spriteRenderer.color; // Store the current color
+        
         spriteRenderer.color = new Color(1f, 0.392f, 0.392f, 1f); // Change color to red
         yield return new WaitForSeconds(0.2f); // Wait for 0.2s
         spriteRenderer.color = normalColor; // Change color back to normal

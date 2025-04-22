@@ -34,6 +34,8 @@ public class ZombieMovement : MonoBehaviour
         {
             MoveToPlayer();
         }
+        CheckForTeleport();
+
     }
 
     private void MoveToPlayer()
@@ -113,6 +115,43 @@ public class ZombieMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
+        }
+    }
+
+    private void CheckForTeleport()
+    {
+        if (transform.position.x > 50)
+        {
+            transform.position = new Vector3(-48, transform.position.y, 0);
+            /*            cinemachineCamera.GetComponent<CinemachineCamera>().enabled = false;
+                        cinemachineCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -5.43f);
+                        cinemachineCamera.GetComponent<CinemachineCamera>().enabled = true;*/
+
+        }
+        else if (transform.position.x < -48)
+        {
+            transform.position = new Vector3(50, transform.localPosition.y, 0);
+            /*            cinemachineCamera.GetComponent<CinemachineFollow>().enabled = false;
+                        cinemachineCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -5.43f);
+                        cinemachineCamera.GetComponent<CinemachineCamera>().enabled = true;*/
+
+        }
+
+        if (transform.position.y > 50)
+        {
+            transform.position = new Vector3(transform.position.x, -26, 0);
+            /*            cinemachineCamera.GetComponent<CinemachineCamera>().enabled = false;
+                        cinemachineCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -5.43f);
+                        cinemachineCamera.GetComponent<CinemachineCamera>().enabled = true;*/
+
+        }
+        else if (transform.position.y < -26)
+        {
+            transform.position = new Vector3(transform.localPosition.x, 50, 0);
+            /*            cinemachineCamera.GetComponent<CinemachineFollow>().enabled = false;
+                        cinemachineCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -5.43f);
+                        cinemachineCamera.GetComponent<CinemachineCamera>().enabled = true;*/
+
         }
     }
 

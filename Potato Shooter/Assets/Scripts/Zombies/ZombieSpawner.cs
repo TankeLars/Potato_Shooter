@@ -15,12 +15,13 @@ public class ZombieSpawner : MonoBehaviour
     public float spawnRadius = 25f; // Radius within which zombies can spawn
     public float minDistance = 10f; // Minimum distance between player and zombie spawn position
 
+    [SerializeField] public int difficultyModifier = 1; // Difficulty level of the game
+
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
         // Make the ZombieSpawner instance available from any script
         DontDestroyOnLoad(gameObject);
-
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -71,7 +72,6 @@ public class ZombieSpawner : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minDistance);
-
     }
 
     void InstantiateZombie(Vector3 spawnPosition)
@@ -95,5 +95,18 @@ public class ZombieSpawner : MonoBehaviour
 
         // Instantiate the selected zombie prefab at the specified spawn position
         GameObject zombie = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    public void IncreaseDifficulty()
+    {
+        difficultyModifier++;
+
+        if (difficultyModifier % 3 == 0)
+        {
+            minZombiesAmount++;
+            maxZombiesAmount++;
+        }
+
+        maxZombies = (int)(maxZombies * 1.15f);
     }
 }
