@@ -9,22 +9,25 @@ public class HomeScreen : MonoBehaviour
     private GameObject start;
     [SerializeField]
     private GameObject chooseWeapons;
-    
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         ResetUI();
         GameData.Instance.Reset();
     }
 
     public void OnStart()
     {
+        audioSource.Play();
         start.SetActive(false);
         chooseWeapons.SetActive(true);
     }
 
     public void OnWeaponSelection(Gun selectedGun)
     {
+        audioSource.Play();
         GameData.Instance.selectedGun = selectedGun;
         SceneManager.LoadScene(0);
     }

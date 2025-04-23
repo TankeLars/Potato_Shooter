@@ -4085,6 +4085,7 @@ MonoBehaviour:
   buffZombie: {fileID: 3118504444266711074, guid: 265cdb542ff2dc54aa52ab5f4f9a73a8, type: 3}
   spawnRadius: 25
   minDistance: 10
+  difficultyModifier: 1
 --- !u!114 &1305045728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4097,6 +4098,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6f6ccceab08f242ad69c59808c7e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
+  currentXP: 0
+  xpToNextLevel: 0
   baseXP: 100
   xpMultiplier: 1.5
 --- !u!114 &1305045729 stripped
@@ -4145,7 +4149,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.233
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5612,7 +5616,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 865e2e9696fd3da449c5f3e0f6f0ff5d, type: 3}
   m_Resource: {fileID: 8300000, guid: 865e2e9696fd3da449c5f3e0f6f0ff5d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.076
   m_Pitch: 1
   Loop: 1
   Mute: 0
