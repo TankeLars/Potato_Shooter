@@ -16,6 +16,8 @@ public class ZombieHealth : MonoBehaviour, IDamageable
 
 
     Vector3 Position { get { return transform.position; } }
+    private bool isDead = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +32,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(spriteRenderer.color);
+//        Debug.Log(spriteRenderer.color);
     }
 
     public void DoDamage(float damage)
@@ -74,8 +76,10 @@ public class ZombieHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        PlayerLevel.Instance.AddXP(xpOnDeath);
+        if (isDead) return;
+        isDead = true;
         Destroy(gameObject);
+        PlayerLevel.Instance.AddXP(xpOnDeath);
         ZombieSpawner zombieSpawner = player.GetComponent<ZombieSpawner>();
         zombieSpawner.currentZombies--;
     }

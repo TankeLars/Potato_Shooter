@@ -75,10 +75,14 @@ public class GameManager : MonoBehaviour
 
     public void ShowDeathScreen()
     {
+        if (isPlayerDead) return;
+
         isPlayerDead = true;
         StopTimer();
+
         if (canvasSwitcher != null)
         {
+            //Time.timeScale = 0;
             canvasSwitcher.ShowDeathScreen();
         }
         else
@@ -86,6 +90,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("CanvasSwitcher instance not found!");
         }
     }
+
 
     public void ShowWinScreen()
     {
@@ -104,6 +109,7 @@ public class GameManager : MonoBehaviour
     }
     public void ShowUpgradeScreen()
     {
+        if (isPlayerDead || GameData.Instance.isDead) return;
         Time.timeScale = 0;
         canvasSwitcher.ShowUpgradeScreen();
     }

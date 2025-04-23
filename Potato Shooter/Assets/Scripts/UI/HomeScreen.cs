@@ -14,6 +14,7 @@ public class HomeScreen : MonoBehaviour
     void Start()
     {
         ResetUI();
+        GameData.Instance.Reset();
     }
 
     public void OnStart()

@@ -36,19 +36,32 @@ public class CanvasSwitcher : MonoBehaviour
 
     public void ShowWinScreen()
     {
-        inGameHUD.gameObject.SetActive(false);
-        deathScreen.gameObject.SetActive(false);
-        winScreen.gameObject.SetActive(true);
-        upgradeScreen.gameObject.SetActive(false);
+        if (!GameData.Instance.isDead)
+        {
+            inGameHUD.gameObject.SetActive(false);
+            deathScreen.gameObject.SetActive(false);
+            winScreen.gameObject.SetActive(true);
+            upgradeScreen.gameObject.SetActive(false);
+        }
+        else
+        {
+            ShowDeathScreen();
+        }
     }
 
     public void ShowUpgradeScreen()
     {
+        if (GameData.Instance.isDead)
+        {
+            return;
+        }
+
         inGameHUD.gameObject.SetActive(false);
         deathScreen.gameObject.SetActive(false);
         winScreen.gameObject.SetActive(false);
         upgradeScreen.gameObject.SetActive(true);
     }
+
 
     private void EnsureCanvasGroup(Canvas canvas)
     {

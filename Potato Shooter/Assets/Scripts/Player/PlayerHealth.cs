@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void OnDeath()
     {
+        GameData.Instance.isDead = true;
         Destroy(gameObject);
         GameManager.Instance.ShowDeathScreen();
     }
