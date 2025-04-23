@@ -7,9 +7,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private float maxHealth;
     public float currentHealth;
     public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    [SerializeField]
+    private AudioClip hurtSound;
 
+    private AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
     }
@@ -18,6 +22,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         StartCoroutine(FlashRoutine());
         currentHealth -= damageAmount;
+        if(hurtSound != null)
+        {
+            audioSource.PlayOneShot(hurtSound);
+        }
         if(currentHealth <= 0)
         {
             currentHealth = 0f;

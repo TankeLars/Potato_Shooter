@@ -104,18 +104,6 @@ public class PlayerMovement : MonoBehaviour
     {
         movement = value.Get<Vector2>();
     }
-    public void OnSprint(InputValue value)
-    {
-        if(value.isPressed)
-        {
-            movementSpeed *= 1.5f;
-        }
-        else
-        {
-            movementSpeed /= 1.5f;
-        }
-        
-    }
 
     public void OnDash()
     {

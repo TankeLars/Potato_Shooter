@@ -51,10 +51,6 @@ public class PlayerShoot : MonoBehaviour
                 isReloading = false; 
                 potatoes--;
             }
-            else
-            {
-                // Handle no ammo case here
-            }
         }
     }
 

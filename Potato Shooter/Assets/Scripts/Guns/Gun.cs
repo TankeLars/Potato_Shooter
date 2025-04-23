@@ -77,7 +77,7 @@ public class Gun : MonoBehaviour
     {
         if (currentAmmo == 0)
         {
-            return false;
+            Reload();
         }
 
         if (canFire && !isReloading)

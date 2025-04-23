@@ -33,37 +33,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchWeapon",
-                    "type": "Button",
-                    "id": "12343193-db28-40ca-9363-bffd740c40c8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "bb5b0ea7-72f6-4e4b-91c4-35411903ef87",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=2)",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Dash",
                     "type": "Button",
                     "id": "23425f48-7401-4dd2-9e3e-bd10dd4d68c1",
                     "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ScrollWeapon",
-                    "type": "PassThrough",
-                    "id": "c347cfa4-23f4-4b44-8dc3-fed7bd7453cc",
-                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -149,45 +122,12 @@
                 },
                 {
                     "name": "",
-                    "id": "4af1d73b-83d2-4d34-b11a-3e250e8d2554",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwitchWeapon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c179d371-8fa1-4c91-9d71-34bb0b2898b9",
+                    "id": "b667b512-eac9-4ed9-ad61-798946cb36d1",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b667b512-eac9-4ed9-ad61-798946cb36d1",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c67f593-0531-46db-8ce0-0d082733f368",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ScrollWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
