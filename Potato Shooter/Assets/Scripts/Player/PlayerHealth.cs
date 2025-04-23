@@ -7,10 +7,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private float maxHealth;
     public float currentHealth;
     public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+
     public Color normalColor; // Variable to store the normal color of the sprite
 
+    [SerializeField]
+    private AudioClip hurtSound;
+
+
+    private AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
         normalColor = spriteRenderer.color; // Store the current color
@@ -21,6 +28,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         StartCoroutine(FlashRoutine());
         currentHealth -= damageAmount;
+        if(hurtSound != null)
+        {
+            audioSource.PlayOneShot(hurtSound);
+        }
         if(currentHealth <= 0)
         {
             currentHealth = 0f;
