@@ -29,7 +29,7 @@ public class HomeScreen : MonoBehaviour
     {
         audioSource.Play();
         GameData.Instance.selectedGun = selectedGun;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ResetUI()

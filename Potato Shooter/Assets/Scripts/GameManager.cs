@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     }
     public void QuitGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     // Helper method to check if timer is running

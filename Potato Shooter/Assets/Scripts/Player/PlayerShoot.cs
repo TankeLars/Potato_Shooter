@@ -41,8 +41,19 @@ public class PlayerShoot : MonoBehaviour
     {
         if (isFiring && equippedGun != null && canFire)
         {
-            equippedGun.AttemptFire(); 
+            if (equippedGun.currentAmmo != 0 || potatoes != 0)
+            {
+                if (equippedGun.currentAmmo == 0 && potatoes > 0 && equippedGun.isReloading == false)
+                {
+                    potatoes--; 
+                }
+                
+                equippedGun.AttemptFire(); 
+            }
         }
+
+
+
         if (isReloading && equippedGun != null && equippedGun.isReloading == false)
         {
             if (potatoes > 0)
